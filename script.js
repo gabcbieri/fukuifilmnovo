@@ -54,47 +54,6 @@ if (budgetTriggers.length) {
   });
 }
 
-const menuToggle = document.querySelector(".menu-toggle");
-const menuClose = document.querySelector(".menu-close");
-const floatingMenu = document.querySelector(".floating-menu");
-const menuContents = document.querySelector(".menu-contents");
-const navigationLinks = document.querySelectorAll("#main-navigation a");
-
-if (menuToggle && menuClose && floatingMenu && menuContents) {
-
-  const openMenu = () => {
-    floatingMenu.classList.add("menu-open");
-
-    menuToggle.setAttribute("aria-expanded", "true");
-    menuContents.setAttribute("aria-hidden", "false");
-
-    document.body.style.overflow = "hidden";
-  };
-
-  const closeMenu = () => {
-    floatingMenu.classList.remove("menu-open");
-
-    menuToggle.setAttribute("aria-expanded", "false");
-    menuContents.setAttribute("aria-hidden", "true");
-
-    document.body.style.overflow = "";
-  };
-
-  menuToggle.addEventListener("click", openMenu);
-
-  menuClose.addEventListener("click", closeMenu);
-
-  navigationLinks.forEach((link) => {
-    link.addEventListener("click", closeMenu);
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeMenu();
-    }
-  });
-}
-
 const lightboxLinks = Array.from(document.querySelectorAll("[data-lightbox-image]"));
 if (lightboxLinks.length) {
   const lightbox = document.createElement("div");
@@ -185,5 +144,20 @@ if (lightboxLinks.length) {
     if (event.key === "ArrowRight") {
       showNextImage();
     }
+  });
+}
+
+const menuToggle = document.querySelector(".menu-toggle");
+const mobileMenu = document.querySelector(".mobile-menu");
+const mobileMenuClose = document.querySelector(".mobile-menu-close");
+
+if (menuToggle && mobileMenu && mobileMenuClose) {
+
+  menuToggle.addEventListener("click", () => {
+    mobileMenu.classList.add("active");
+  });
+
+  mobileMenuClose.addEventListener("click", () => {
+    mobileMenu.classList.remove("active");
   });
 }
