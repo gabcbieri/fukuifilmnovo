@@ -148,16 +148,60 @@ if (lightboxLinks.length) {
 }
 
 const menuToggle = document.querySelector(".menu-toggle");
-const mobileMenu = document.querySelector(".mobile-menu");
-const mobileMenuClose = document.querySelector(".mobile-menu-close");
+const floatingMenu = document.querySelector(".floating-menu");
+const menuContents = document.querySelector(".menu-contents");
+const menuClose = document.querySelector("[data-menu-close]");
 
-if (menuToggle && mobileMenu && mobileMenuClose) {
+if (menuToggle && floatingMenu && menuContents) {
+  const closeMenu = () => {
+    floatingMenu.classList.remove("menu-open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Abrir menu");
+    menuContents.setAttribute("aria-hidden", "true");
+  };
+
+  const openMenu = () => {
+    floatingMenu.classList.add("menu-open");
+    menuToggle.setAttribute("aria-expanded", "true");
+    menuToggle.setAttribute("aria-label", "Fechar menu");
+    menuContents.setAttribute("aria-hidden", "false");
+  };
 
   menuToggle.addEventListener("click", () => {
-    mobileMenu.classList.add("active");
+    if (floatingMenu.classList.contains("menu-open")) {
+      closeMenu();
+      return;
+    }
+
+    openMenu();
   });
 
-  mobileMenuClose.addEventListener("click", () => {
-    mobileMenu.classList.remove("active");
+  if (menuClose) {
+    menuClose.addEventListener("click", closeMenu);
+  }
+
+  menuContents.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMenu();
+    }
   });
 }
+
+const standardsFaqButtons = document.querySelectorAll(".standards-faq-question");
+
+standardsFaqButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const item = button.closest(".standards-faq-item");
+
+    if (!item) {
+      return;
+    }
+
+    const isOpen = item.classList.toggle("is-open");
+    button.setAttribute("aria-expanded", String(isOpen));
+  });
+});

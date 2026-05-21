@@ -19,21 +19,27 @@
 </head>
 <body>
   <nav class="floating-menu" aria-label="Menu principal">
-    <ul>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation"
+      aria-label="Abrir menu">
+      <img class="menu-toggle__icon" src="img/abrir-menu.png" alt="" aria-hidden="true" />
+    </button>
+    <div class="menu-contents" aria-hidden="true">
+      <button class="menu-close" type="button" data-menu-close aria-label="Fechar menu">
+        <img class="menu-close__icon" src="img/voltar.png" alt="" aria-hidden="true" />
+      </button>
+
+    <ul id="main-navigation">
       <li><a href="index.html">Início</a></li>
-      <li><a href="sobre.html">Sobre</a></li>
       <li><a href="serviços.html">Serviços</a></li>
       <li><a href="projetos.html">Projetos</a></li>
       <li><a href="emfoco.html">Em foco</a></li>
     </ul>
     <div class="social-icons">
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-x-twitter"></i></a>
-      <a href="#"><i class="fab fa-tiktok"></i></a>
-      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://www.instagram.com/fukuifilm/" target="_blank" rel="noreferrer" aria-label="Instagram da FUKUIFILM"><i class="fab fa-instagram"></i><span class="social-label">Instagram</span></a>
     </div>
     <div class="menu-contact">
       <a class="budget-btn" href="https://wa.me/5547999988082?text=Ol%C3%A1!%20Quero%20conversar%20sobre%20um%20projeto%20e%20solicitar%20um%20or%C3%A7amento!" target="_blank" rel="noreferrer" data-budget-trigger>Solicitar orçamento</a>
+    </div>
     </div>
   </nav>
   <footer class="site-footer">
