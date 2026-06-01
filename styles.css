@@ -186,6 +186,7 @@ body::before {
   object-fit: cover;
   object-position: center center;
   background: #000;
+  pointer-events: none;
 }
 .home-section {
   position: relative;
@@ -231,21 +232,146 @@ body::before {
   line-height: 1.62;
 }
 .home-positioning {
-  min-height: 82vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: #0d0d0d;
-}
-.home-lead {
+  min-height: 78vh;
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
-  gap: 64px;
-  align-items: end;
+  align-items: center;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(225, 4, 19, 0.18), transparent 34%),
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    #080808;
+  background-size: auto, 72px 72px, 72px 72px, auto;
 }
-.home-lead p {
-  max-width: 480px;
-  padding-bottom: 8px;
+
+.home-positioning {
+min-height: 90vh;
+display: flex;
+align-items: center;
+background:
+radial-gradient(circle at top left,
+rgba(225, 4, 19, 0.18),
+transparent 35%),
+#080808;
+overflow: hidden;
+position: relative;
+}
+
+.positioning-layout {
+width: 100%;
+display: grid;
+grid-template-columns: 140px 1fr 220px;
+gap: 50px;
+align-items: center;
+}
+
+.positioning-number {
+display: flex;
+align-items: center;
+}
+
+.positioning-number span {
+font-family: "Inter", Arial, sans-serif;
+font-size: clamp(90px, 12vw, 220px);
+line-height: 1;
+color: rgba(255,255,255,0.05);
+}
+
+.positioning-main {
+position: relative;
+}
+
+.positioning-main h1 {
+font-family: "Inter", Arial, sans-serif;
+font-weight: 400;
+font-size: clamp(58px, 8vw, 140px);
+line-height: .92;
+letter-spacing: -0.04em;
+text-transform: uppercase;
+color: #fff;
+max-width: 1000px;
+}
+
+.positioning-description {
+margin-top: 32px;
+max-width: 500px;
+color: rgba(255,255,255,.65);
+font-family: "Inter", Arial, sans-serif;
+font-size: clamp(16px,1.3vw,20px);
+line-height: 1.7;
+}
+
+.positioning-side {
+display: flex;
+flex-direction: column;
+gap: 16px;
+}
+
+.positioning-side span {
+border-left: 2px solid #e10413;
+padding-left: 14px;
+color: rgba(255,255,255,.55);
+font-family: "Inter", Arial, sans-serif;
+font-size: 12px;
+letter-spacing: .22em;
+text-transform: uppercase;
+}
+
+.positioning-main::after {
+content: "FUKUIFILM";
+position: absolute;
+right: -180px;
+bottom: -80px;
+font-size: clamp(90px, 16vw, 260px);
+color: transparent;
+-webkit-text-stroke: 1px rgba(255,255,255,0.04);
+pointer-events: none;
+white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+.positioning-layout {
+grid-template-columns: 1fr;
+gap: 30px;
+}
+
+.positioning-number {
+display: none;
+}
+
+.positioning-side {
+flex-direction: row;
+flex-wrap: wrap;
+}
+
+.positioning-main::after {
+display: none;
+}
+}
+
+.home-lead__side span {
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-right: 2px solid #e10413;
+  color: rgba(255, 255, 255, 0.74);
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+.home-lead__tags span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.62);
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 12px;
+  background: rgba(0, 0, 0, 0.22);
 }
 .home-brief,
 .home-standards {
@@ -279,6 +405,41 @@ body::before {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 42px;
   max-width: 1180px;
+}
+.brief-image-strip {
+  display: grid;
+  grid-template-columns: 1.1fr 0.72fr 1.1fr;
+  gap: 18px;
+  margin-top: 72px;
+  max-width: 1180px;
+  align-items: stretch;
+}
+.brief-image-strip img {
+  width: 100%;
+  height: 360px;
+  display: block;
+  object-fit: cover;
+  border-radius: 8px;
+  filter: saturate(0.92) contrast(1.04);
+  opacity: 0;
+  transform: translateY(26px);
+  transition: transform 0.7s ease, filter 0.7s ease;
+  animation: stripImageRise 0.9s ease forwards;
+}
+.brief-image-strip img:nth-child(2) {
+  height: 430px;
+  margin-top: -36px;
+  transform: translateY(-10px) scale(0.96);
+  animation-name: stripImageFloatIn;
+  animation-delay: 0.14s;
+}
+.brief-image-strip img:nth-child(3) {
+  animation-name: stripImageSlideIn;
+  animation-delay: 0.28s;
+}
+.brief-image-strip img:hover {
+  filter: saturate(1.08) contrast(1.08);
+  transform: translateY(-10px) scale(1.015);
 }
 .method-grid {
   display: grid;
@@ -318,8 +479,40 @@ body::before {
 .home-standards h2 {
   color: #ffffff;
 }
+.standards-image {
+  margin-top: 42px;
+  width: min(100%, 440px);
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #111111;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: standardsImageReveal 1s ease forwards;
+}
+.standards-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center 35%;
+  animation: standardsImageDrift 9s ease-in-out infinite alternate;
+  transition: filter 0.7s ease;
+}
+.standards-image:hover img {
+  filter: saturate(1.12) contrast(1.06);
+}
+.standards-image--wide {
+  margin-top: 18px;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  animation-delay: 0.18s;
+}
+.standards-image--wide img {
+  object-position: center;
+}
 .standards-list {
-  align-self: center;
+  align-self: end;
   display: grid;
   gap: 12px;
 }
@@ -397,12 +590,67 @@ body::before {
   align-items: flex-start;
   justify-content: center;
 }
-.home-conversation h2 {
+.conversation-copy h2 {
   max-width: 950px;
 }
-.home-conversation > p:not(.section-kicker) {
+.conversation-copy > p:not(.section-kicker) {
   max-width: 760px;
   margin-top: 26px;
+}
+@keyframes stripImageRise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes stripImageFloatIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes stripImageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(34px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes standardsImageReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes standardsImageDrift {
+  from {
+    transform: scale(1.04) translateY(-1.5%);
+  }
+  to {
+    transform: scale(1.1) translateY(1.5%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brief-image-strip img,
+  .standards-image,
+  .standards-image img {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .brief-image-strip img,
+  .standards-image img {
+    transition: none;
+  }
 }
 .home-cta {
   display: inline-flex;
@@ -761,6 +1009,41 @@ body {
     grid-template-columns: 1fr;
   }
 
+  .home-lead__side {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-self: stretch;
+  }
+
+  .home-lead__side span {
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 10px;
+    border-right-width: 1px;
+    border-bottom: 2px solid #e10413;
+    font-size: 11px;
+  }
+
+  .standards-list {
+    align-self: stretch;
+  }
+
+  .brief-image-strip {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 50px;
+  }
+
+  .brief-image-strip img,
+  .brief-image-strip img:nth-child(2) {
+    height: 260px;
+    margin-top: 0;
+  }
+
+  .standards-image {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+  }
+
   .home-section h1 {
     font-size: clamp(34px, 11vw, 56px);
   }
@@ -812,6 +1095,44 @@ body {
   }
   .home-positioning {
     min-height: auto;
+  }
+  .home-lead {
+    gap: 30px;
+    padding: 30px 0 30px 22px;
+  }
+  .home-lead::after {
+    left: 22px;
+  }
+  .home-lead__tags {
+    position: static;
+    margin-top: -12px;
+  }
+  .home-lead__statement {
+    font-size: clamp(20px, 6vw, 27px);
+  }
+  .home-lead__side {
+    grid-template-columns: 1fr;
+  }
+  .home-lead__side span {
+    justify-content: flex-start;
+  }
+  .standards-image {
+    aspect-ratio: 4 / 5;
+  }
+  .standards-image--wide {
+    aspect-ratio: 16 / 10;
+  }
+  .brief-image-strip {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 36px;
+  }
+  .brief-image-strip img,
+  .brief-image-strip img:nth-child(2) {
+    height: clamp(150px, 48vw, 220px);
+    aspect-ratio: auto;
+    margin-top: 0;
+    border-radius: 6px;
   }
   .intro-video {
     height: 100svh;
