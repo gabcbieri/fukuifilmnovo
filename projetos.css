@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 body {
-    background: #0d0d0d;
     font-family: "Oswald", Arial, sans-serif;
 }
 h1,
@@ -226,6 +225,7 @@ body::before {
 .folder-section {
     background: #f4f1ec;
     color: #111111;
+    padding-bottom: 0;
 }
 .folder-intro {
     display: grid;
@@ -248,8 +248,22 @@ body::before {
     border-radius: 8px;
     background: #ffffff;
     color: #111111;
-    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.08);
+    box-shadow: none;
 }
+
+.folder-section,
+.projects-note{
+    border: none !important;
+    outline: none !important;
+}
+
+.folder-section::before,
+.folder-section::after,
+.projects-note::before,
+.projects-note::after{
+    display: none !important;
+}
+
 .folder-card__top {
     display: flex;
     align-items: center;
@@ -395,6 +409,8 @@ body::before {
     flex-direction: column;
     justify-content: center;
     background: #f4f1ec;
+    padding-top: 0;
+    margin-top: -1px;
 }
 
 .projects-process,

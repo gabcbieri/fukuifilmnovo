@@ -406,6 +406,10 @@ display: none;
   gap: 42px;
   max-width: 1180px;
 }
+
+.text-columns p{
+  font-family: "Inter", Arial, sans-serif;
+}
 .brief-image-strip {
   display: grid;
   grid-template-columns: 1.1fr 0.72fr 1.1fr;
@@ -1171,3 +1175,4 @@ body {
     z-index: 4;
   }
 }
+
