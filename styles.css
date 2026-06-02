@@ -181,7 +181,7 @@ body::before {
 }
 .intro-video video {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: block;
   object-fit: cover;
   object-position: center center;
@@ -1004,7 +1004,9 @@ body {
   .intro-video video {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    height: 100dvh;
+    object-fit: cover;
+    object-position: center center;
   }
 
   .home-lead,
@@ -1139,12 +1141,14 @@ body {
     border-radius: 6px;
   }
   .intro-video {
-    height: 100svh;
+    height: 100vh;
   }
   .intro-video video {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    height: 100dvh;
+    object-fit: cover;
+    object-position: center center;
   }
   .method-grid {
     grid-template-columns: 1fr;
