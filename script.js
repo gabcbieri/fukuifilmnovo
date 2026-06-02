@@ -205,3 +205,15 @@ standardsFaqButtons.forEach((button) => {
     button.setAttribute("aria-expanded", String(isOpen));
   });
 });
+
+const video = document.querySelector("#introVideo source");
+
+if (window.innerWidth <= 1098) {
+  video.src =
+    "https://res.cloudinary.com/dtv1yh9pa/video/upload/v1779385108/intromobile_ur8wg0.mp4";
+} else {
+  video.src =
+    "https://res.cloudinary.com/dtv1yh9pa/video/upload/intro_zgtmgs.mp4";
+}
+
+document.querySelector("#introVideo").load();
