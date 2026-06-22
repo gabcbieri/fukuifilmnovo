@@ -1,4 +1,9 @@
+/* =========================
+   BUDGET MODAL
+========================= */
+
 const budgetTriggers = document.querySelectorAll("[data-budget-trigger]");
+
 if (budgetTriggers.length) {
   const modal = document.createElement("div");
   modal.className = "budget-modal";
@@ -6,23 +11,27 @@ if (budgetTriggers.length) {
   modal.setAttribute("aria-modal", "true");
   modal.setAttribute("aria-labelledby", "budget-modal-title");
   modal.hidden = true;
+
   modal.innerHTML = `
     <div class="budget-modal__overlay" data-budget-close></div>
     <div class="budget-modal__panel">
-      <button class="budget-modal__close" type="button" aria-label="Fechar" data-budget-close>X</button>
+      <button class="budget-modal__close" type="button" data-budget-close>X</button>
       <p class="budget-modal__eyebrow">WhatsApp</p>
       <h2 id="budget-modal-title">Ir para o WhatsApp?</h2>
       <p>Vamos abrir uma conversa para solicitar seu orçamento.</p>
       <div class="budget-modal__actions">
         <button class="budget-modal__cancel" type="button" data-budget-close>Cancelar</button>
-        <a class="budget-modal__confirm" href="#" target="_blank" rel="noreferrer">Continuar</a>
+        <a class="budget-modal__confirm" href="#" target="_blank">Continuar</a>
       </div>
     </div>
   `;
+
   document.body.appendChild(modal);
+
   const confirmLink = modal.querySelector(".budget-modal__confirm");
   const closeControls = modal.querySelectorAll("[data-budget-close]");
   let lastFocusedElement = null;
+
   const openModal = (href) => {
     lastFocusedElement = document.activeElement;
     confirmLink.href = href;
@@ -30,178 +39,221 @@ if (budgetTriggers.length) {
     document.body.classList.add("budget-modal-open");
     confirmLink.focus();
   };
+
   const closeModal = () => {
     modal.hidden = true;
     document.body.classList.remove("budget-modal-open");
-    if (lastFocusedElement) {
-      lastFocusedElement.focus();
-    }
+    if (lastFocusedElement) lastFocusedElement.focus();
   };
-  budgetTriggers.forEach((trigger) => {
-    trigger.addEventListener("click", (event) => {
-      event.preventDefault();
+
+  budgetTriggers.forEach(trigger => {
+    trigger.addEventListener("click", (e) => {
+      e.preventDefault();
       openModal(trigger.href);
     });
   });
-  closeControls.forEach((control) => {
-    control.addEventListener("click", closeModal);
-  });
-  confirmLink.addEventListener("click", closeModal);
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && !modal.hidden) {
-      closeModal();
-    }
+
+  closeControls.forEach(btn => btn.addEventListener("click", closeModal));
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modal.hidden) closeModal();
   });
 }
 
+
+/* =========================
+   LIGHTBOX
+========================= */
+
 const lightboxLinks = Array.from(document.querySelectorAll("[data-lightbox-image]"));
+
 if (lightboxLinks.length) {
   const lightbox = document.createElement("div");
   lightbox.className = "image-lightbox";
-  lightbox.setAttribute("role", "dialog");
-  lightbox.setAttribute("aria-modal", "true");
-  lightbox.setAttribute("aria-label", "Visualizacao de imagem");
   lightbox.hidden = true;
+
   lightbox.innerHTML = `
-    <button class="image-lightbox__close" type="button" aria-label="Fechar" data-lightbox-close>X</button>
-    <button class="image-lightbox__nav image-lightbox__nav--prev" type="button" aria-label="Imagem anterior" data-lightbox-prev>&lt;</button>
-    <img class="image-lightbox__image" src="" alt="" />
-    <button class="image-lightbox__nav image-lightbox__nav--next" type="button" aria-label="Proxima imagem" data-lightbox-next>&gt;</button>
+    <button data-lightbox-close>X</button>
+    <button data-lightbox-prev><</button>
+    <img />
+    <button data-lightbox-next>></button>
   `;
+
   document.body.appendChild(lightbox);
 
-  const lightboxImage = lightbox.querySelector(".image-lightbox__image");
-  const closeButton = lightbox.querySelector("[data-lightbox-close]");
-  const prevButton = lightbox.querySelector("[data-lightbox-prev]");
-  const nextButton = lightbox.querySelector("[data-lightbox-next]");
-  let currentImageIndex = 0;
-  let currentLightboxGroup = lightboxLinks;
-  let lastFocusedImageLink = null;
+  const img = lightbox.querySelector("img");
+  const closeBtn = lightbox.querySelector("[data-lightbox-close]");
+  const prevBtn = lightbox.querySelector("[data-lightbox-prev]");
+  const nextBtn = lightbox.querySelector("[data-lightbox-next]");
 
-  const showImage = (index) => {
-    currentImageIndex = (index + currentLightboxGroup.length) % currentLightboxGroup.length;
-    const link = currentLightboxGroup[currentImageIndex];
-    const image = link.querySelector("img");
-    lightboxImage.src = link.href;
-    lightboxImage.alt = image ? image.alt : link.textContent.trim();
-  };
+  let index = 0;
+  let group = lightboxLinks;
+  let lastFocus = null;
 
-  const openLightbox = (link) => {
-    lastFocusedImageLink = document.activeElement;
+  function show(i) {
+    index = (i + group.length) % group.length;
+    const link = group[index];
+
+    img.src = link.href;
+    img.alt = link.querySelector("img")?.alt || "";
+  }
+
+  function open(link) {
+    lastFocus = document.activeElement;
+
     const groupName = link.dataset.lightboxGroup;
-    currentLightboxGroup = groupName
-      ? lightboxLinks.filter((item) => item.dataset.lightboxGroup === groupName)
+
+    group = groupName
+      ? lightboxLinks.filter(l => l.dataset.lightboxGroup === groupName)
       : lightboxLinks;
-    showImage(currentLightboxGroup.indexOf(link));
+
+    index = group.indexOf(link);
+
+    show(index);
+
     lightbox.hidden = false;
-    document.body.classList.add("image-lightbox-open");
-    closeButton.focus();
-  };
+    closeBtn.focus();
+  }
 
-  const closeLightbox = () => {
+  function close() {
     lightbox.hidden = true;
-    lightboxImage.src = "";
-    document.body.classList.remove("image-lightbox-open");
-    if (lastFocusedImageLink) {
-      lastFocusedImageLink.focus();
-    }
-  };
+    img.src = "";
+    lastFocus?.focus();
+  }
 
-  const showPreviousImage = () => {
-    showImage(currentImageIndex - 1);
-  };
-
-  const showNextImage = () => {
-    showImage(currentImageIndex + 1);
-  };
-
-  lightboxLinks.forEach((link) => {
-    link.addEventListener("click", (event) => {
-      event.preventDefault();
-      openLightbox(link);
+  lightboxLinks.forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      open(link);
     });
   });
 
-  closeButton.addEventListener("click", closeLightbox);
-  prevButton.addEventListener("click", showPreviousImage);
-  nextButton.addEventListener("click", showNextImage);
-  lightbox.addEventListener("click", (event) => {
-    if (event.target === lightbox) {
-      closeLightbox();
-    }
-  });
+  closeBtn.onclick = close;
+  prevBtn.onclick = () => show(index - 1);
+  nextBtn.onclick = () => show(index + 1);
 
-  document.addEventListener("keydown", (event) => {
-    if (lightbox.hidden) {
-      return;
-    }
-    if (event.key === "Escape") {
-      closeLightbox();
-    }
-    if (event.key === "ArrowLeft") {
-      showPreviousImage();
-    }
-    if (event.key === "ArrowRight") {
-      showNextImage();
-    }
+  document.addEventListener("keydown", (e) => {
+    if (lightbox.hidden) return;
+
+    if (e.key === "Escape") close();
+    if (e.key === "ArrowLeft") show(index - 1);
+    if (e.key === "ArrowRight") show(index + 1);
   });
 }
 
-const menuToggle = document.querySelector(".menu-toggle");
-const floatingMenu = document.querySelector(".floating-menu");
-const menuContents = document.querySelector(".menu-contents");
-const menuClose = document.querySelector("[data-menu-close]");
 
-if (menuToggle && floatingMenu && menuContents) {
-  const closeMenu = () => {
-    floatingMenu.classList.remove("menu-open");
-    menuToggle.setAttribute("aria-expanded", "false");
-    menuToggle.setAttribute("aria-label", "Abrir menu");
-    menuContents.setAttribute("aria-hidden", "true");
-  };
+/* =========================
+   MENU
+========================= */
 
-  const openMenu = () => {
-    floatingMenu.classList.add("menu-open");
-    menuToggle.setAttribute("aria-expanded", "true");
-    menuToggle.setAttribute("aria-label", "Fechar menu");
-    menuContents.setAttribute("aria-hidden", "false");
-  };
+const menu = document.querySelector(".floating-menu");
+let lastScroll = 0;
 
-  menuToggle.addEventListener("click", () => {
-    if (floatingMenu.classList.contains("menu-open")) {
-      closeMenu();
-      return;
-    }
+window.addEventListener("scroll", () => {
+  const current = window.pageYOffset;
 
-    openMenu();
-  });
-
-  if (menuClose) {
-    menuClose.addEventListener("click", closeMenu);
+  if (current <= 50) {
+    menu.classList.remove("hide");
+  } else if (current > lastScroll) {
+    menu.classList.add("hide");
+  } else {
+    menu.classList.remove("hide");
   }
 
-  menuContents.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", closeMenu);
-  });
+  lastScroll = current;
+});
 
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeMenu();
-    }
-  });
+
+/* =========================
+   MÉTODO SLIDER (FIXADO)
+========================= */
+
+const methodSlides = document.querySelectorAll(".method-slide");
+const prevMethodBtn = document.getElementById("prevMethod");
+const nextMethodBtn = document.getElementById("nextMethod");
+
+let currentMethod = 0;
+
+function updateMethod() {
+  methodSlides.forEach(s => s.classList.remove("active"));
+  methodSlides[currentMethod].classList.add("active");
+
+  prevMethodBtn.disabled = currentMethod === 0;
+  nextMethodBtn.disabled = currentMethod === methodSlides.length - 1;
+
+  prevMethodBtn.classList.toggle("disabled", currentMethod === 0);
+  nextMethodBtn.classList.toggle("disabled", currentMethod === methodSlides.length - 1);
 }
 
-const standardsFaqButtons = document.querySelectorAll(".standards-faq-question");
+function moveMethod(dir) {
+  currentMethod = Math.max(0, Math.min(methodSlides.length - 1, currentMethod + dir));
+  updateMethod();
+}
 
-standardsFaqButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const item = button.closest(".standards-faq-item");
+prevMethodBtn.addEventListener("click", () => moveMethod(-1));
+nextMethodBtn.addEventListener("click", () => moveMethod(1));
 
-    if (!item) {
-      return;
-    }
+document.addEventListener("keydown", (e) => {
+  const section = document.querySelector("#metodo");
+  const rect = section.getBoundingClientRect();
 
+  if (rect.top > window.innerHeight || rect.bottom < 0) return;
+
+  if (e.key === "ArrowLeft") moveMethod(-1);
+  if (e.key === "ArrowRight") moveMethod(1);
+});
+
+updateMethod();
+
+
+/* =========================
+   SERVIÇOS SLIDER
+========================= */
+
+const track = document.querySelector(".services-track");
+const prevBtn = document.querySelector(".services-section .prev");
+const nextBtn = document.querySelector(".services-section .next");
+
+let currentSlide = 0;
+const slidesPerView = 2;
+
+const cards = document.querySelectorAll(".service-card");
+const maxSlide = Math.ceil(cards.length / slidesPerView) - 1;
+
+function updateServices() {
+  const width = cards[0].offsetWidth + 20;
+  track.style.transform = `translateX(-${currentSlide * width * slidesPerView}px)`;
+}
+
+function moveServices(dir) {
+  currentSlide = Math.max(0, Math.min(maxSlide, currentSlide + dir));
+  updateServices();
+}
+
+prevBtn.addEventListener("click", () => moveServices(-1));
+nextBtn.addEventListener("click", () => moveServices(1));
+
+document.addEventListener("keydown", (e) => {
+  const section = document.querySelector("#servicos");
+  const rect = section.getBoundingClientRect();
+
+  if (rect.top > window.innerHeight || rect.bottom < 0) return;
+
+  if (e.key === "ArrowLeft") moveServices(-1);
+  if (e.key === "ArrowRight") moveServices(1);
+});
+
+updateServices();
+
+
+/* =========================
+   FAQ (mantido)
+========================= */
+
+document.querySelectorAll(".standards-faq-question").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const item = btn.closest(".standards-faq-item");
     const isOpen = item.classList.toggle("is-open");
-    button.setAttribute("aria-expanded", String(isOpen));
+    btn.setAttribute("aria-expanded", isOpen);
   });
 });

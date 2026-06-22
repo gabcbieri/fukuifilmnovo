@@ -18,191 +18,331 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Oswald:wght@400&display=swap"
     rel="stylesheet" />
+  <link rel="preload" href="img/FUKUIFILM-HORIZONTAL-BRANCO.png" as="image">
+  <link rel="preload" href="img/hero-video-poster.jpg" as="image">
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="icon" type="image/png" href="img/ico.ico" />
+  <!-- LOGO -->
+  <link rel="preload" as="image" href="img/FUKUIFILM-HORIZONTAL-BRANCO.png">
+
+  <!-- HERO -->
+  <link rel="preload" as="image" href="img/hero-video-poster.jpg">
+
+  <!-- PROJETOS -->
+  <link rel="preload" as="image" href="img/foto1tortinha.jpeg">
+  <link rel="preload" as="image" href="img/foto2.jpg">
+  <link rel="preload" as="image" href="img/foto3.jpeg">
+  <link rel="preload" as="image" href="img/foto4.jpeg">
+
+  <!-- SOBRE -->
+  <link rel="preload" as="image" href="img/CADEIRA%20FUKUIFILM%202.png.png">
+
+  <!-- SERVIÇOS -->
+  <link rel="preload" as="image" href="img/piove1.jpg">
+  <link rel="preload" as="image" href="img/uvva1.jpg">
+  <link rel="preload" as="image" href="img/cafe.jpg">
+  <link rel="preload" as="image" href="img/ozoncare/FS5A177564.jpg">
 </head>
 
 <body>
-  <nav class="floating-menu" aria-label="Menu principal">
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation"
-      aria-label="Abrir menu">
-      <img class="menu-toggle__icon" src="img/abrir-menu.png" alt="" aria-hidden="true" />
-    </button>
-    <div class="menu-contents" aria-hidden="true">
-      <button class="menu-close" type="button" data-menu-close aria-label="Fechar menu">
-        <img class="menu-close__icon" src="img/voltar.png" alt="" aria-hidden="true" />
-      </button>
+  <nav class="floating-menu">
 
+    <div class="menu-contents">
+
+      <!-- LOGO ESQUERDA -->
+      <a href="index.html" class="menu-brand">
+        <img src="img/FUKUIFILM-HORIZONTAL-BRANCO.png" alt="FUKUIFILM" class="menu-logo">
+      </a>
+
+      <!-- MENU CENTRO -->
       <ul id="main-navigation">
-        <li><a href="index.html">Início</a></li>
-        <li><a href="serviços.html">Serviços</a></li>
-        <li><a href="projetos.html">Projetos</a></li>
-        <li><a href="emfoco.html">Em foco</a></li>
+        <li><a href="#">Início</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#metodo">Método</a></li>
+        <li><a href="#servicos">Serviços</a></li>
       </ul>
-      <div class="social-icons">
-        <a href="https://www.instagram.com/fukuifilm/" target="_blank" rel="noreferrer"
-          aria-label="Instagram da FUKUIFILM"><i class="fab fa-instagram"></i><span
-            class="social-label">Instagram</span></a>
+
+      <!-- DIREITA -->
+      <div class="menu-right">
+
+        <a href="https://www.instagram.com/fukuifilm/" target="_blank" class="menu-instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+
+        <a class="budget-btn" href="https://wa.me/5547999988082" target="_blank">
+          Solicitar orçamento
+        </a>
+
       </div>
-      <div class="menu-contact">
-        <a class="budget-btn"
-          href="https://wa.me/5547999988082?text=Ol%C3%A1!%20Quero%20conversar%20sobre%20um%20projeto%20e%20solicitar%20um%20or%C3%A7amento!"
-          target="_blank" rel="noreferrer" data-budget-trigger>Solicitar orçamento</a>
-      </div>
+
     </div>
+
   </nav>
   <main>
-    <section class="intro-video" aria-label="Vídeo de introdução">
-      <video autoplay muted playsinline preload="metadata">
-        <source src="https://res.cloudinary.com/dtv1yh9pa/video/upload/v1780502637/VERTICAL_1_dabwuo.mp4"
-          type="video/mp4" media="(max-width: 1098px)" />
-        <source src="https://res.cloudinary.com/dtv1yh9pa/video/upload/intro_zgtmgs.mp4" type="video/mp4" />
+
+    <!-- INTRO COM VIDEO -->
+    <section class="intro-video">
+
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="..." type="video/mp4">
       </video>
-    </section>
-    <section class="home-section home-brief">
 
-      <div class="brief-header">
-        <p class="section-kicker">Como pensamos</p>
+      <div class="hero-overlay">
 
-        <h2>
-          Uma boa imagem não resolve tudo sozinha.
-          Ela precisa sustentar uma mensagem.
-        </h2>
-      </div>
+        <p class="hero-kicker">
+          FILMES <span>•</span> FOTOGRAFIA <span>•</span> CAMPANHAS
+        </p>
 
-      <div class="brief-editorial">
+        <h1>
+          FUKUIFILM<span>.</span>
+        </h1>
 
-        <figure class="brief-image brief-image--hero">
-          <img src="img/ozoncare/FS5A177564.jpg" alt="">
-        </figure>
+        <p class="hero-description">
+          Captamos histórias que conectam marcas e pessoas.
+        </p>
 
-        <div class="brief-text brief-text--large">
-          <p>
-            Mais do que gravar vídeos ou criar imagens
-            esteticamente agradáveis, a proposta da
-            FUKUIFILM é desenvolver projetos com conceito,
-            direção e intenção.
-          </p>
-        </div>
+        <div class="hero-actions">
 
-        <figure class="brief-image brief-image--small">
-          <img src="img/ozoncare/5_01.jpg" alt="">
-        </figure>
+          <a href="#projetos" class="btn-primary">
+            Ver projetos
+            <span class="btn-arrow">-></span>
+          </a>
 
-        <div class="brief-text">
-          <p>
-            A trajetória da marca foi construída
-            principalmente na prática. Aprendendo com
-            projetos reais, atendendo clientes e refinando
-            processos ao longo do caminho.
-          </p>
+          <a href="#contato" class="btn-secondary">
+            Solicitar orçamento
+            <span class="btn-arrow">-></span>
+          </a>
+
         </div>
 
       </div>
 
     </section>
-    <section class="home-section home-method">
-      <div class="section-heading">
-        <p class="section-kicker">Método</p>
-        <h2>Processo claro, do primeiro diagnóstico à entrega final.</h2>
-      </div>
-      <div class="method-grid">
-        <article>
-          <span>01</span>
-          <h3>Entendimento</h3>
-          <p>
-            Mapeamos objetivo, público, contexto e referências para evitar
-            soluções genéricas.
-          </p>
-        </article>
-        <article>
-          <span>02</span>
-          <h3>Direção</h3>
-          <p>
-            Definimos linguagem visual, narrativa e prioridades de produção
-            antes da execução.
-          </p>
-        </article>
-        <article>
-          <span>03</span>
-          <h3>Produção</h3>
-          <p>
-            Executamos com atenção a detalhe, consistência de marca e uso real
-            do material.
-          </p>
-        </article>
-        <article>
-          <span>04</span>
-          <h3>Entrega</h3>
-          <p>
-            Finalizamos os arquivos com organização, qualidade e formatos
-            adequados para cada canal.
-          </p>
-        </article>
-      </div>
-    </section>
-    <section class="home-section home-standards">
-      <div class="standards-copy">
-        <p class="section-kicker">Padrão de trabalho</p>
-        <h2>
-          Partimos da ideia de que um projeto bem executado vai além da entrega visual.
+
+    <!-- PROJETOS -->
+    <section id="projetos" class="featured-projects">
+
+      <div class="projects-header">
+
+        <h2 class="projects-heading">
+          <span>PROJETOS EM</span>
+          <span>DESTAQUE</span>
         </h2>
-        <figure class="standards-image">
-          <img src="img/piove1.jpg" alt="Detalhe de produção de campanha de produto" loading="lazy" />
-        </figure>
+
       </div>
-      <div class="standards-list">
-        <article class="standards-faq-item">
-          <button class="standards-faq-question" type="button" aria-expanded="false">
-            <span>Projetos</span>
-            <span class="standards-faq-icon" aria-hidden="true">+</span>
-          </button>
-          <p class="standards-faq-answer">
-            Os projetos são conduzidos com clareza, responsabilidade e atenção aos detalhes que impactam diretamente a
-            experiência do cliente. Desde alinhamentos até entregas finais, cada etapa é pensada para manter um fluxo
-            mais objetivo, funcional e profissional.
-          </p>
-        </article>
-        <article class="standards-faq-item">
-          <button class="standards-faq-question" type="button" aria-expanded="false">
-            <span>Comunicação</span>
-            <span class="standards-faq-icon" aria-hidden="true">+</span>
-          </button>
-          <p class="standards-faq-answer">
-            A comunicação acontece de forma direta e transparente, evitando ruídos desnecessários durante o
-            desenvolvimento. Os materiais são organizados estrategicamente para diferentes aplicações, como campanhas,
-            redes sociais, sites e apresentações, facilitando o uso e garantindo consistência visual.
-          </p>
-        </article>
-        <article class="standards-faq-item">
-          <button class="standards-faq-question" type="button" aria-expanded="false">
-            <span>Tendências</span>
-            <span class="standards-faq-icon" aria-hidden="true">+</span>
-          </button>
-          <p class="standards-faq-answer">
-            Mais do que seguir tendências momentâneas, a construção estética de cada projeto busca refletir o
-            posicionamento, a identidade e a proposta de cada marca de forma autêntica e intencional.
-          </p>
-        </article>
-        <figure class="standards-image standards-image--wide">
-          <img src="img/cafe.jpg" alt="Campanha horizontal de produto com direção fotográfica" loading="lazy" />
-        </figure>
+
+      <div class="projects-gallery">
+
+        <img src="img/foto1tortinha.jpeg" alt="" loading="eager">
+        <img src="img/foto2.jpg" alt="" loading="eager">
+        <img src="img/foto3.jpeg" alt="" loading="eager">
+        <img src="img/foto4.jpeg" alt="" loading="eager">
+
       </div>
+
+      <div class="projects-footer">
+
+        <a href="projetos.html" class="projects-link">
+          Ver projetos em destaque
+          <span class="arrow">→</span>
+        </a>
+
+      </div>
+
     </section>
-    <section class="home-section home-conversation">
-      <div class="conversation-copy">
-        <p class="section-kicker">Próximo passo</p>
+
+    <!-- SOBRE -->
+    <section id="sobre" class="about-section">
+
+      <div class="about-container">
+
+        <div class="about-left">
+
+          <span class="about-kicker">
+            EXPERIÊNCIA QUE GERA RESULTADO.
+          </span>
+
+          <h2>
+            + de 10 <br> anos<br>
+            contando<br>
+            histórias.
+          </h2>
+
+        </div>
+
+        <div class="about-center">
+
+          <img src="img/CADEIRA FUKUIFILM 2.png.png" alt="FUKUIFILM" loading="eager">
+
+        </div>
+
+        <div class="about-right">
+
+          <div class="stat-item">
+            <h3>+240</h3>
+            <p>projetos realizados</p>
+          </div>
+
+          <div class="stat-item">
+            <h3>+50</h3>
+            <p>marcas atendidas</p>
+          </div>
+
+          <div class="stat-item">
+            <h3>+ milhões</h3>
+            <p>de pessoas impactadas</p>
+          </div>
+
+          <div class="stat-item">
+            <h3>+ criatividade</h3>
+            <p>em cada detalhe</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- MÉTODO -->
+    <section id="metodo" class="method-section">
+
+      <div class="method-header">
         <h2>
-          Se a sua marca precisa comunicar melhor, começamos pela conversa
-          certa.
+          NOSSO<br>
+          MÉTODO
         </h2>
+
         <p>
-          Conte o que você quer construir, reposicionar ou lançar. A partir
-          disso, avaliamos o caminho mais adequado para transformar intenção em
-          material visual consistente.
+          ESTRATÉGIA, CRIAÇÃO E<br>
+          EXECUÇÃO QUE TRANSFORMAM<br>
+          IDEIAS EM RESULTADOS
         </p>
       </div>
+
+      <div class="method-slider">
+
+        <button id="prevMethod" class="method-arrow prev" type="button">
+          ◀
+        </button>
+
+        <div class="method-slide active">
+          <img src="img/CADEIRA FUKUIFILM 2.png.png" alt="Entendimento">
+          <div class="method-overlay">
+            <h3>ENTENDIMENTO</h3>
+            <p>Compreendemos profundamente sua marca, objetivos e público para criar uma estratégia sólida.</p>
+          </div>
+        </div>
+
+        <div class="method-slide">
+          <img src="img/uvva1.jpg" alt="Direção">
+          <div class="method-overlay">
+            <h3>DIREÇÃO</h3>
+            <p>Definimos caminhos criativos que conectam propósito, estética e resultado.</p>
+          </div>
+        </div>
+
+        <div class="method-slide">
+          <img src="img/uvva1.jpg" alt="Processo">
+          <div class="method-overlay">
+            <h3>PROCESSO</h3>
+            <p>Planejamos e executamos cada etapa com precisão e consistência.</p>
+          </div>
+        </div>
+
+        <div class="method-slide">
+          <img src="img/uvva1.jpg" alt="Entrega">
+          <div class="method-overlay">
+            <h3>ENTREGA</h3>
+            <p>Finalizamos cada projeto com excelência, garantindo impacto e valor.</p>
+          </div>
+        </div>
+
+        <button id="nextMethod" class="method-arrow next" type="button">
+          ▶
+        </button>
+
+      </div>
+
     </section>
+
+    <!-- SERVIÇOS -->
+    <section id="servicos" class="services-section">
+
+      <h2 class="services-title">
+        O QUE FAZEMOS
+      </h2>
+
+      <div class="services-slider">
+
+        <button class="slider-btn prev">
+          ◀
+        </button>
+
+        <div class="services-track">
+          <article class="service-card">
+
+            <img src="img/piove1.jpg" alt="Filmes" loading="eager">
+
+            <div class="service-overlay">
+              <h3>FILMES</h3>
+              <p>
+                Produções cinematográficas para marcas, campanhas e projetos autorais.
+              </p>
+            </div>
+
+          </article>
+
+          <article class="service-card">
+
+            <img src="img/uvva1.jpg" alt="Fotografia" loading="eager">
+
+            <div class="service-overlay">
+              <h3>FOTOGRAFIA</h3>
+              <p>
+                Ensaios, produtos, gastronomia e conteúdo visual de alto impacto.
+              </p>
+            </div>
+
+          </article>
+
+          <article class="service-card">
+
+            <img src="img/cafe.jpg" alt="Campanhas" loading="eager">
+
+            <div class="service-overlay">
+              <h3>CAMPANHAS</h3>
+              <p>
+                Estratégias visuais que fortalecem presença e posicionamento.
+              </p>
+            </div>
+
+          </article>
+
+          <article class="service-card">
+
+            <img src="img/ozoncare/FS5A177564.jpg" alt="Direção Visual" loading="eager">
+
+            <div class="service-overlay">
+              <h3>DIREÇÃO VISUAL</h3>
+              <p>
+                Construção estética e narrativa para marcas memoráveis.
+              </p>
+            </div>
+
+          </article>
+
+        </div>
+
+        <button class="slider-btn next">
+          ▶
+        </button>
+
+      </div>
+
+    </section>
+
   </main>
   <footer class="site-footer">
     <p>© 2026 FUKUIFILM. Todos os direitos reservados.</p>
