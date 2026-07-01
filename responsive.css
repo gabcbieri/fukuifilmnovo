@@ -209,7 +209,7 @@ img {
 }
 
 .hero-overlay h1 {
-    font-size: clamp(48px, 13.5vw, 200px);
+    font-size: 95px;
     white-space: nowrap;
     line-height: .87;
     overflow: hidden;
@@ -223,7 +223,7 @@ img {
     }
 
     .hero-overlay h1 {
-        font-size: clamp(48px, 14vw, 160px);
+        font-size: 50px;
     }
 
     .hero-description {
@@ -241,7 +241,7 @@ img {
     }
 
     .hero-overlay h1 {
-        font-size: clamp(44px, 15vw, 120px);
+        font-size: 50px;
         white-space: nowrap;
     }
 
@@ -266,7 +266,7 @@ img {
     }
 
     .hero-overlay h1 {
-        font-size: clamp(42px, 18.5vw, 90px);
+        font-size: 50px;
         white-space: normal;
         line-height: .88;
         word-break: break-word;
@@ -306,7 +306,7 @@ img {
     }
 
     .hero-overlay h1 {
-        font-size: clamp(38px, 19vw, 72px);
+        font-size: 50px;
     }
 
     .hero-kicker {

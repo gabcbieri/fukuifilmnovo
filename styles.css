@@ -166,11 +166,21 @@ a {
     left: 8% !important;
 }
 
+.h1 hero-title {
+    font-family: "Oswald", sans-serif;
+    font-weight: 700;
+
+    font-size: 64px;
+    line-height: .87;
+
+    text-transform: uppercase;
+}
+
 .hero-overlay h1 {
     font-family: "Inter", sans-serif;
     font-weight: 500;
 
-    font-size: 15vw;
+    font-size: 64px;
     line-height: .85;
 
     white-space: nowrap;
