@@ -203,56 +203,84 @@ window.addEventListener("scroll", () => {
 const films = {
 
     cadafalso: {
-        title: "CADAFALSO",
-        images: [
-            "img/piove1.jpg",
-            "img/piove1.jpg",
-            "img/piove1.jpg",
-            "img/piove1.jpg"
-        ],
-        description: `
-        Cadafalso é uma produção autoral da FUKUIFILM que explora temas
-        de identidade, memória e conflito interno através de uma linguagem
-        visual intensa e cinematográfica.
 
-        O filme utiliza fotografia contrastada, composição cuidadosa
-        e narrativa simbólica para construir uma experiência emocional
-        marcante para o espectador.
-        `
+        image: "img/cadafalsohorizontal.jpg",
+
+        description:
+            "Entre memórias fragmentadas e silêncios profundos, uma jovem enfrenta os ecos de um passado que insiste em permanecer. Cadafalso é uma jornada sensorial sobre identidade, culpa e a busca por pertencimento.",
+
+        genre: "DRAMA PSICOLÓGICO",
+        duration: "14 MIN",
+        year: "2024",
+        rating: "14",
+
+        director: "Yohanna Fukui",
+        editor: "Yohanna Fukui",
+        producer: "FUKUIFILM",
+        cast: "Júlia Souza, Ace Monteiro, Laís Ferreira",
+        script: "Yohanna Fukui",
+        runtime: "14 minutos",
+        photo: "Yohanna Fukui",
+
+        trailer: "#",
+
+        festivals:
+            "Festival de Cinema de Goiânia 2024 • Lift-Off Global Network 2024 • Oniros Film Awards 2024"
+
     },
 
     etre: {
-        title: "ÊTRE",
-        images: [
-            "img/piove1.jpg",
-            "img/piove1.jpg",
-            "img/piove1.jpg",
-            "img/piove1.jpg"
-        ],
-        description: `
-        ÊTRE é um projeto experimental focado na percepção humana,
-        presença e existência.
 
-        Com uma direção visual minimalista e atmosfera contemplativa,
-        o filme propõe uma reflexão sobre quem somos, como ocupamos
-        os espaços e como construímos nossa identidade.
-        `
+        image: "img/etrehorizontal.png",
+
+        description:
+            "ÊTRE investiga presença, memória e existência através de uma narrativa contemplativa e visualmente minimalista.",
+
+        genre: "EXPERIMENTAL",
+        duration: "12 MIN",
+        year: "2024",
+        rating: "12",
+
+        director: "Yohanna Fukui",
+        editor: "Yohanna Fukui",
+        producer: "FUKUIFILM",
+        cast: "A definir",
+        script: "Yohanna Fukui",
+        runtime: "12 minutos",
+        photo: "Yohanna Fukui",
+
+        trailer: "#",
+
+        festivals:
+            "Em circuito de festivais"
+
     }
 
 };
 
 const filmButtons = document.querySelectorAll(".film-btn");
 const filmModal = document.querySelector(".film-modal");
-
-const filmTitle = document.getElementById("film-title");
-const filmDescription = document.getElementById("film-description");
+const filmClose = document.querySelector(".film-close");
 
 const filmImage1 = document.getElementById("film-image-1");
-const filmImage2 = document.getElementById("film-image-2");
-const filmImage3 = document.getElementById("film-image-3");
-const filmImage4 = document.getElementById("film-image-4");
 
-const filmClose = document.querySelector(".film-close");
+const filmDescription = document.getElementById("film-description");
+
+const filmGenre = document.getElementById("film-genre");
+const filmDuration = document.getElementById("film-duration");
+const filmYear = document.getElementById("film-year");
+const filmRating = document.getElementById("film-rating");
+
+const filmDirector = document.getElementById("film-director");
+const filmEditor = document.getElementById("film-editor");
+const filmProducer = document.getElementById("film-producer");
+const filmCast = document.getElementById("film-cast");
+const filmScript = document.getElementById("film-script");
+const filmRuntime = document.getElementById("film-runtime");
+const filmPhoto = document.getElementById("film-photo");
+
+const filmTrailer = document.getElementById("film-trailer");
+const filmFestivals = document.getElementById("film-festivals");
 
 filmButtons.forEach(button => {
 
@@ -263,13 +291,26 @@ filmButtons.forEach(button => {
 
         if (!film) return;
 
-        filmTitle.textContent = film.title.toUpperCase();
-        filmDescription.textContent = film.description.trim();
+        filmImage1.src = film.image;
 
-        filmImage1.src = film.images[0];
-        filmImage2.src = film.images[1];
-        filmImage3.src = film.images[2];
-        filmImage4.src = film.images[3];
+        filmDescription.textContent = film.description;
+
+        filmGenre.textContent = film.genre;
+        filmDuration.textContent = film.duration;
+        filmYear.textContent = film.year;
+        filmRating.textContent = film.rating;
+
+        filmDirector.textContent = film.director;
+        filmEditor.textContent = film.editor;
+        filmProducer.textContent = film.producer;
+        filmCast.textContent = film.cast;
+        filmScript.textContent = film.script;
+        filmRuntime.textContent = film.runtime;
+        filmPhoto.textContent = film.photo;
+
+        filmTrailer.href = film.trailer;
+
+        filmFestivals.textContent = film.festivals;
 
         filmModal.classList.add("active");
 
@@ -278,13 +319,17 @@ filmButtons.forEach(button => {
 });
 
 filmClose.addEventListener("click", () => {
+
     filmModal.classList.remove("active");
+
 });
 
 filmModal.addEventListener("click", (e) => {
 
     if (e.target === filmModal) {
+
         filmModal.classList.remove("active");
+
     }
 
 });
@@ -294,7 +339,9 @@ document.addEventListener("keydown", (e) => {
     if (!filmModal.classList.contains("active")) return;
 
     if (e.key === "Escape") {
+
         filmModal.classList.remove("active");
+
     }
 
 });

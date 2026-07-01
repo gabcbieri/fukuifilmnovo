@@ -21,14 +21,16 @@
   <link rel="preload" href="img/FUKUIFILM-HORIZONTAL-BRANCO.png" as="image">
   <link rel="preload" href="img/hero-video-poster.jpg" as="image">
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="responsive.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="icon" type="image/png" href="img/ico.ico" />
+
   <!-- LOGO -->
   <link rel="preload" as="image" href="img/FUKUIFILM-HORIZONTAL-BRANCO.png">
 
   <!-- PROJETOS -->
   <link rel="preload" as="image" href="img/foto1tortinha.jpeg">
-  <link rel="preload" as="image" href="img/foto2.jpg">
+  <link rel="preload" as="image" href="img/fabricademontros.jpeg">
   <link rel="preload" as="image" href="img/foto3.jpeg">
   <link rel="preload" as="image" href="img/foto4.jpeg">
 
@@ -58,6 +60,11 @@
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#metodo">Método</a></li>
         <li><a href="#servicos">Serviços</a></li>
+        <li class="nav-instagram">
+          <a href="https://www.instagram.com/fukuifilm/" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </li>
       </ul>
 
       <!-- DIREITA -->
@@ -71,24 +78,32 @@
           Solicitar orçamento
         </a>
 
+        <!-- HAMBURGUER — visível apenas em mobile/tablet via CSS -->
+        <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false"
+          aria-controls="main-navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+
       </div>
 
     </div>
 
   </nav>
+
   <main>
 
     <!-- INTRO COM VIDEO -->
     <section class="intro-video">
 
-      <video autoplay muted loop playsinline preload="metadata">
-        <source src="..." type="video/mp4">
+      <video autoplay muted loop playsinline preload="metadata" poster="img/hero-video-poster.jpg">
+        <source src="img/videositevertical.mp4" type="video/mp4" media="(max-width: 767px)">
+        <source src="img/videositehorizontal.mp4" type="video/mp4">
       </video>
 
       <div class="hero-overlay">
 
         <p class="hero-kicker">
-          FILMES <span>•</span> FOTOGRAFIA <span>•</span> CAMPANHAS
+          FOTOGRAFIA <span>•</span> CAMPANHAS <span>•</span> FILMES
         </p>
 
         <h1>
@@ -101,49 +116,12 @@
 
         <div class="hero-actions">
 
-          <a href="#projetos" class="btn-primary">
-            Ver projetos
-            <span class="btn-arrow">-></span>
-          </a>
-
           <a href="#contato" class="btn-secondary">
             Solicitar orçamento
-            <span class="btn-arrow">-></span>
+            <span class="btn-arrow">→</span>
           </a>
 
         </div>
-
-      </div>
-
-    </section>
-
-    <!-- PROJETOS -->
-    <section id="projetos" class="featured-projects">
-
-      <div class="projects-header">
-
-        <h2 class="projects-heading">
-          <span>PROJETOS EM</span>
-          <span>DESTAQUE</span>
-        </h2>
-
-      </div>
-
-      <div class="projects-gallery">
-
-        <img src="img/foto1tortinha.jpeg" alt="" loading="eager">
-        <img src="img/foto2.jpg" alt="" loading="eager">
-        <img src="img/foto3.jpeg" alt="" loading="eager">
-        <img src="img/foto4.jpeg" alt="" loading="eager">
-
-      </div>
-
-      <div class="projects-footer">
-
-        <a href="projetos.html" class="projects-link">
-          Ver projetos em destaque
-          <span class="arrow">→</span>
-        </a>
 
       </div>
 
@@ -202,6 +180,38 @@
 
     </section>
 
+    <!-- PROJETOS -->
+    <section id="projetos" class="featured-projects">
+
+      <div class="projects-header">
+
+        <h2 class="projects-heading">
+          <span>PROJETOS EM</span>
+          <span>DESTAQUE</span>
+        </h2>
+
+      </div>
+
+      <div class="projects-gallery">
+
+        <img src="img/foto1tortinha.jpeg" alt="" loading="eager">
+        <img src="img/fabricademontros.jpeg" alt="" loading="eager">
+        <img src="img/foto3.jpeg" alt="" loading="eager">
+        <img src="img/foto4.jpeg" alt="" loading="eager">
+
+      </div>
+
+      <div class="projects-footer">
+
+        <a href="projetos.html" class="projects-link">
+          Ver projetos em destaque
+          <span class="arrow">→</span>
+        </a>
+
+      </div>
+
+    </section>
+
     <!-- MÉTODO -->
     <section id="metodo" class="method-section">
 
@@ -220,9 +230,7 @@
 
       <div class="method-slider">
 
-        <button id="prevMethod" class="method-arrow prev" type="button">
-          ◀
-        </button>
+        <button id="prevMethod" class="method-arrow prev" type="button">◀</button>
 
         <div class="method-slide active">
           <img src="img/CADEIRA FUKUIFILM 2.png.png" alt="Entendimento">
@@ -256,9 +264,7 @@
           </div>
         </div>
 
-        <button id="nextMethod" class="method-arrow next" type="button">
-          ▶
-        </button>
+        <button id="nextMethod" class="method-arrow next" type="button">▶</button>
 
       </div>
 
@@ -273,77 +279,56 @@
 
       <div class="services-slider">
 
-        <button class="slider-btn prev">
-          ◀
-        </button>
+        <button id="prevServices" class="slider-btn prev" type="button">◀</button>
 
         <div class="services-track">
+
           <article class="service-card">
-
             <img src="img/piove1.jpg" alt="Filmes" loading="eager">
-
             <div class="service-overlay">
               <h3>FILMES</h3>
-              <p>
-                Produções cinematográficas para marcas, campanhas e projetos autorais.
-              </p>
+              <p>Produções cinematográficas para marcas, campanhas e projetos autorais.</p>
             </div>
-
           </article>
 
           <article class="service-card">
-
             <img src="img/uvva1.jpg" alt="Fotografia" loading="eager">
-
             <div class="service-overlay">
               <h3>FOTOGRAFIA</h3>
-              <p>
-                Ensaios, produtos, gastronomia e conteúdo visual de alto impacto.
-              </p>
+              <p>Ensaios, produtos, gastronomia e conteúdo visual de alto impacto.</p>
             </div>
-
           </article>
 
           <article class="service-card">
-
             <img src="img/cafe.jpg" alt="Campanhas" loading="eager">
-
             <div class="service-overlay">
               <h3>CAMPANHAS</h3>
-              <p>
-                Estratégias visuais que fortalecem presença e posicionamento.
-              </p>
+              <p>Estratégias visuais que fortalecem presença e posicionamento.</p>
             </div>
-
           </article>
 
           <article class="service-card">
-
             <img src="img/ozoncare/FS5A177564.jpg" alt="Direção Visual" loading="eager">
-
             <div class="service-overlay">
               <h3>DIREÇÃO VISUAL</h3>
-              <p>
-                Construção estética e narrativa para marcas memoráveis.
-              </p>
+              <p>Construção estética e narrativa para marcas memoráveis.</p>
             </div>
-
           </article>
 
         </div>
 
-        <button class="slider-btn next">
-          ▶
-        </button>
+        <button id="nextServices" class="slider-btn next" type="button">▶</button>
 
       </div>
 
     </section>
 
   </main>
+
   <footer class="site-footer">
     <p>© 2026 FUKUIFILM. Todos os direitos reservados.</p>
   </footer>
+
   <script src="script.js"></script>
 </body>
 

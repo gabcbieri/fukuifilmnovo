@@ -1,0 +1,742 @@
+/* =========================
+   RESPONSIVIDADE — FUKUIFILM
+   Breakpoints:
+   - Mobile S:  < 480px
+   - Mobile L:  480px – 767px
+   - Tablet:    768px – 1023px
+   - Notebook:  1024px – 1279px
+   - Desktop:   >= 1280px (base)
+========================= */
+
+/* =========================
+   UTILITÁRIOS GLOBAIS
+========================= */
+
+html, body {
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .method-slide,
+    .service-card img,
+    .projects-gallery img,
+    .btn-primary,
+    .btn-secondary,
+    .budget-btn,
+    .projects-link,
+    .gallery-arrow {
+        transition: none;
+    }
+}
+
+/* =========================
+   MENU — HAMBURGUER
+========================= */
+
+/* Botao oculto no desktop */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 18px;
+    width: 38px;
+    height: 38px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: border-color .2s, background .2s;
+    z-index: 1100;
+}
+
+.menu-toggle:hover {
+    border-color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.menu-close {
+    display: none !important;
+}
+
+/* Garante que o menu nunca suma — anula o display:none do styles.css */
+.floating-menu {
+    display: flex !important;
+}
+
+/* Estado hide ao rolar: usa transform, nao display */
+.floating-menu.hide {
+    transform: translateX(-50%) translateY(-120%);
+}
+
+/* =========================
+   MENU — TABLET (768–1023px)
+========================= */
+
+@media (max-width: 1023px) {
+
+    .floating-menu {
+        top: 12px;
+        width: 92%;
+        padding: 14px 20px;
+        border-radius: 14px;
+    }
+
+    .menu-contents {
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    #main-navigation {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+        padding: 12px 0 4px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 12px;
+    }
+
+    #main-navigation.open {
+        display: flex;
+    }
+
+    #main-navigation li {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    #main-navigation li:last-child {
+        border-bottom: none;
+    }
+
+    #main-navigation a {
+        display: block;
+        padding: 14px 4px;
+        font-size: 15px;
+        letter-spacing: .04em;
+    }
+
+    /* Instagram vermelho e alinhado com os links no menu mobile */
+    #main-navigation li.nav-instagram {
+        border-bottom: none;
+        padding: 14px 4px;
+        display: flex;
+        align-items: center;
+    }
+
+    #main-navigation li.nav-instagram a {
+        padding: 0;
+        color: #e10613;
+        font-size: 22px;
+        display: flex;
+        align-items: center;
+    }
+
+    /* Esconde o icone do Instagram da barra direita no mobile */
+    .menu-instagram {
+        display: none;
+    }
+
+    .budget-btn {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .menu-right {
+        gap: 14px;
+    }
+}
+
+/* =========================
+   MENU — MOBILE (< 768px)
+========================= */
+
+@media (max-width: 767px) {
+
+    .floating-menu {
+        top: 10px;
+        width: 94%;
+        padding: 12px 16px;
+        border-radius: 12px;
+    }
+
+    .menu-logo {
+        height: 22px;
+    }
+
+    .menu-toggle {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+
+    #main-navigation a {
+        font-size: 16px;
+        padding: 16px 4px;
+    }
+}
+
+/* =========================
+   HERO / INTRO VIDEO
+========================= */
+
+.intro-video {
+    position: relative;
+    width: 100%;
+    height: 100dvh;
+    min-height: 500px;
+    overflow: hidden;
+}
+
+/* Garante margem dos dois lados — resolve o corte */
+.hero-overlay {
+    position: absolute !important;
+    bottom: 72px !important;
+    left: 6% !important;
+    right: 6% !important;
+    top: auto !important;
+    transform: none !important;
+    max-width: 1400px;
+}
+
+.hero-overlay h1 {
+    font-size: clamp(48px, 13.5vw, 200px);
+    white-space: nowrap;
+    line-height: .87;
+    overflow: hidden;
+}
+
+/* Notebook */
+@media (max-width: 1279px) {
+
+    .hero-overlay {
+        bottom: 60px !important;
+    }
+
+    .hero-overlay h1 {
+        font-size: clamp(48px, 14vw, 160px);
+    }
+
+    .hero-description {
+        font-size: 17px;
+    }
+}
+
+/* Tablet */
+@media (max-width: 1023px) {
+
+    .hero-overlay {
+        left: 5% !important;
+        right: 5% !important;
+        bottom: 56px !important;
+    }
+
+    .hero-overlay h1 {
+        font-size: clamp(44px, 15vw, 120px);
+        white-space: nowrap;
+    }
+
+    .hero-description {
+        font-size: 16px;
+        max-width: 100%;
+    }
+}
+
+/* Mobile (< 768px) — titulo quebra em 2 linhas */
+@media (max-width: 767px) {
+
+    .intro-video {
+        height: 100svh;
+        min-height: 520px;
+    }
+
+    .hero-overlay {
+        left: 5% !important;
+        right: 5% !important;
+        bottom: 44px !important;
+    }
+
+    .hero-overlay h1 {
+        font-size: clamp(42px, 18.5vw, 90px);
+        white-space: normal;
+        line-height: .88;
+        word-break: break-word;
+    }
+
+    .hero-kicker {
+        font-size: 10px;
+        letter-spacing: .14em;
+        margin-bottom: 16px;
+    }
+
+    .hero-description {
+        font-size: 15px;
+        margin-top: 14px;
+        line-height: 1.6;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 24px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        justify-content: space-between;
+        padding: 13px 16px;
+    }
+}
+
+/* Mobile S (< 480px) */
+@media (max-width: 479px) {
+
+    .hero-overlay {
+        bottom: 36px !important;
+    }
+
+    .hero-overlay h1 {
+        font-size: clamp(38px, 19vw, 72px);
+    }
+
+    .hero-kicker {
+        font-size: 9px;
+        letter-spacing: .1em;
+    }
+
+    .hero-description {
+        font-size: 14px;
+    }
+}
+
+/* =========================
+   SOBRE
+========================= */
+
+@media (max-width: 1279px) {
+
+    .about-section {
+        padding: 60px 40px;
+        height: auto;
+        min-height: auto;
+    }
+
+    .about-container {
+        grid-template-columns: 1fr 1fr;
+        min-height: auto;
+    }
+
+    .about-center { display: none; }
+
+    .about-left  { padding: 40px 30px; }
+    .about-right { padding: 40px 30px; gap: 28px; }
+}
+
+@media (max-width: 1023px) {
+
+    .about-section {
+        padding: 60px 24px;
+        height: auto;
+    }
+
+    .about-left h2  { font-size: clamp(40px, 6vw, 70px); }
+    .stat-item h3   { font-size: 32px; }
+}
+
+@media (max-width: 767px) {
+
+    #sobre { scroll-margin-top: 80px; }
+
+    .about-section {
+        padding: 50px 16px;
+        height: auto;
+    }
+
+    .about-container {
+        grid-template-columns: 1fr;
+        border-radius: 8px;
+    }
+
+    .about-center { display: none; }
+
+    .about-left {
+        padding: 32px 20px 16px;
+    }
+
+    .about-left h2 { font-size: clamp(38px, 11vw, 60px); }
+
+    .about-right {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .stat-item h3 { font-size: 26px; }
+    .stat-item p  { font-size: 13px; }
+}
+
+@media (max-width: 479px) {
+
+    .about-right { grid-template-columns: 1fr; }
+    .about-left h2 { font-size: 38px; }
+}
+
+/* =========================
+   PROJETOS (index)
+========================= */
+
+@media (max-width: 1279px) {
+
+    .featured-projects { padding: 60px 40px; }
+    .projects-gallery img { height: 300px; }
+}
+
+@media (max-width: 1023px) {
+
+    .featured-projects {
+        padding: 60px 30px;
+        min-height: auto;
+    }
+
+    .projects-gallery { grid-template-columns: repeat(2, 1fr); }
+    .projects-gallery img { height: 260px; }
+}
+
+@media (max-width: 767px) {
+
+    .featured-projects { padding: 50px 16px 40px; }
+
+    .projects-heading {
+        font-size: clamp(38px, 11vw, 60px);
+        margin-bottom: 30px;
+    }
+
+    .projects-gallery {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .projects-gallery img {
+        height: 190px;
+        border-radius: 8px;
+    }
+
+    .projects-footer {
+        justify-content: center;
+        margin-top: 24px;
+    }
+
+    .projects-link {
+        font-size: 15px;
+        padding: 13px 16px;
+    }
+}
+
+@media (max-width: 479px) {
+
+    .projects-gallery { grid-template-columns: 1fr; }
+    .projects-gallery img { height: 250px; }
+}
+
+/* =========================
+   METODO
+========================= */
+
+@media (max-width: 1279px) {
+
+    .method-section {
+        grid-template-columns: 380px 1fr;
+        padding: 120px 0 100px;
+    }
+
+    .method-header {
+        width: 100%;
+        padding: 80px 30px 60px 30px;
+        height: auto;
+        border-radius: 0 80px 80px 0;
+    }
+
+    .method-slider {
+        width: 90%;
+        height: 380px;
+    }
+}
+
+@media (max-width: 1023px) {
+
+    .method-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+        padding: 80px 24px 120px;
+    }
+
+    .method-header {
+        width: 100%;
+        border-radius: 16px;
+        padding: 36px 28px;
+        height: auto;
+        text-align: center;
+    }
+
+    .method-header h2 { font-size: clamp(42px, 8vw, 72px); }
+    .method-header p  { font-size: 15px; margin-top: 16px; }
+
+    .method-slider {
+        width: 100%;
+        height: 340px;
+        margin: 0;
+    }
+}
+
+@media (max-width: 767px) {
+
+    #metodo { scroll-margin-top: 80px; }
+
+    .method-section { padding: 56px 16px 110px; gap: 36px; }
+
+    .method-header {
+        padding: 28px 18px;
+        border-radius: 12px;
+    }
+
+    .method-header h2 { font-size: clamp(36px, 10vw, 56px); }
+
+    .method-slider {
+        height: 280px;
+        border-radius: 20px;
+    }
+
+    .method-slide img { border-radius: 20px; }
+
+    .method-overlay h3 { font-size: 32px; }
+    .method-overlay p  { font-size: 14px; max-width: 88%; }
+
+    .method-arrow {
+        width: 46px;
+        height: 46px;
+        font-size: 17px;
+        bottom: -66px;
+    }
+}
+
+@media (max-width: 479px) {
+
+    .method-slider { height: 240px; }
+    .method-overlay h3 { font-size: 26px; margin-bottom: 8px; }
+    .method-overlay p  { font-size: 13px; }
+}
+
+/* =========================
+   SERVICOS
+========================= */
+
+@media (max-width: 1279px) {
+
+    .services-section { padding: 60px 3%; }
+    .service-card {
+        min-width: calc(50% - 10px);
+        height: 400px;
+    }
+}
+
+@media (max-width: 1023px) {
+
+    .services-section { padding: 60px 24px; }
+
+    .service-card {
+        min-width: calc(62% - 10px);
+        height: 370px;
+    }
+
+    .services-title { font-size: clamp(40px, 7vw, 65px); }
+}
+
+@media (max-width: 767px) {
+
+    #servicos { scroll-margin-top: 80px; }
+
+    .services-section { padding: 50px 16px 80px; }
+
+    .services-title {
+        font-size: clamp(34px, 10vw, 54px);
+        margin-bottom: 28px;
+    }
+
+    .service-card {
+        min-width: 80vw;
+        height: 320px;
+        border-radius: 10px;
+    }
+
+    .slider-btn {
+        bottom: -54px;
+        width: 44px;
+        height: 44px;
+        font-size: 13px;
+    }
+
+    .service-overlay h3 { font-size: 22px; }
+    .service-overlay p  { font-size: 13px; }
+}
+
+@media (max-width: 479px) {
+
+    .service-card {
+        min-width: 88vw;
+        height: 290px;
+    }
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+@media (max-width: 767px) {
+
+    .site-footer {
+        padding: 22px 16px;
+        font-size: 12px;
+    }
+}
+
+/* =========================
+   PAGINA PROJETOS
+========================= */
+
+@media (max-width: 1279px) {
+
+    .projects-page { padding: 120px 40px 60px; }
+    .projects-grid-custom { grid-template-columns: repeat(3, 1fr); }
+    .project-card img { height: 260px; }
+}
+
+@media (max-width: 1023px) {
+
+    .projects-page { padding: 110px 28px 60px; }
+    .projects-grid-custom { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .project-card img { height: 230px; }
+}
+
+@media (max-width: 767px) {
+
+    .projects-page { padding: 100px 14px 50px; }
+    .projects-page-title h1 { font-size: clamp(40px, 11vw, 70px); }
+    .projects-grid-custom { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+    .project-card img { height: 175px; }
+    .project-name { font-size: 11px; letter-spacing: .07em; }
+}
+
+@media (max-width: 479px) {
+
+    .projects-page { padding: 88px 10px 40px; }
+    .projects-grid-custom { grid-template-columns: 1fr; }
+    .project-card img { height: 255px; }
+}
+
+/* =========================
+   MODAL PROJETOS
+========================= */
+
+@media (max-width: 767px) {
+
+    .project-modal img {
+        max-width: 95vw;
+        max-height: 70vh;
+    }
+
+    .close-modal {
+        top: 14px;
+        right: 18px;
+        font-size: 36px;
+    }
+
+    .gallery-arrow {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+    }
+
+    .prev-arrow { left: 10px; }
+    .next-arrow { right: 10px; }
+}
+
+/* =========================
+   FILMES
+========================= */
+
+@media (max-width: 1279px) {
+
+    .films-gallery { gap: 50px; padding: 60px 30px 80px; }
+
+    .film-modal-content {
+        width: 95vw;
+        height: auto;
+        grid-template-columns: 1fr;
+        padding: 30px;
+        gap: 24px;
+        overflow-y: auto;
+        max-height: 90vh;
+    }
+
+    .film-poster img { height: auto; max-height: 50vw; }
+}
+
+@media (max-width: 1023px) {
+
+    .films-section { padding-top: 100px; padding-bottom: 60px; }
+
+    .films-header h2 {
+        font-size: clamp(42px, 7vw, 78px);
+        text-align: center;
+    }
+
+    .films-gallery {
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+        padding: 50px 24px 60px;
+    }
+
+    .film-block img,
+    .etre-img img {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .films-header { padding: 0 16px 28px; }
+    .films-header h2 { font-size: clamp(36px, 10vw, 58px); }
+
+    .films-gallery { padding: 36px 14px 48px; gap: 36px; }
+
+    .film-btn { font-size: 14px; padding: 12px 24px; }
+
+    .film-modal-content { padding: 18px; gap: 14px; }
+    .film-close { top: 10px; right: 12px; font-size: 34px; }
+
+    .film-tech-grid { grid-template-columns: 1fr; gap: 14px; }
+    .film-bottom    { grid-template-columns: 1fr; gap: 18px; }
+    #film-description { font-size: 14px; line-height: 1.7; }
+}
+
+@media (max-width: 479px) {
+
+    .films-header h2 { font-size: 36px; }
+    .film-btn { width: 100%; text-align: center; }
+}

@@ -309,7 +309,7 @@ a {
     display: flex;
     flex-direction: column;
 
-    font-size: clamp(70px, 7vw, 110px);
+    font-size: clamp(50px, 7vw, 80px);
     font-weight: 800;
     line-height: .88;
 
@@ -336,6 +336,7 @@ a {
     object-fit: cover;
 
     transition: .35s ease;
+    border-radius: 12px;
 }
 
 .projects-gallery img:hover {
@@ -635,7 +636,7 @@ a {
 .method-header h2 {
     color: #f2efeb;
 
-    font-size: clamp(70px, 7vw, 100px);
+    font-size: clamp(50px, 7vw, 80px);
     line-height: .9;
 
     font-weight: 900;
@@ -714,7 +715,7 @@ a {
 }
 
 .method-overlay h3{
-    font-size:78px;
+    font-size:60px;
     line-height:.9;
     margin-bottom:18px;
 }
@@ -827,7 +828,7 @@ a {
 }
 
 .services-title {
-    font-size: clamp(55px, 6vw, 95px);
+    font-size: clamp(50px, 7vw, 80px);
     line-height: .9;
     margin-bottom: 50px;
 }
@@ -938,6 +939,7 @@ a {
     left: 50%;
     transform: translateX(20px);
 }
+
 
 /* =========================
    CONTATO
@@ -1393,7 +1395,7 @@ a {
 
     color: #fff;
 
-    font-size: 14px;
+    font-size: 10px;
     font-weight: 700;
 
     text-transform: uppercase;
@@ -1527,109 +1529,184 @@ a {
     }
 }
 
-/* =========================
-   MODAL FILMES
-========================= */
+/* MODAL FILMES */
 
-.film-modal {
-    position: fixed;
-    inset: 0;
-
-    background: rgba(0, 0, 0, .85);
-
-    display: none;
-    justify-content: center;
-    align-items: center;
-
-    z-index: 9999;
+.film-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.92);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
 }
 
-.film-modal.active {
-    display: flex;
+.film-modal.active{
+    display:flex;
 }
 
-.film-modal-content {
-    background: rgba(255, 255, 255, .08);
+.film-modal-content{
 
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(20px);
+    width:1220px;
+    height:730px;
 
-    border: 1px solid rgba(255, 255, 255, .15);
+    background:#050505;
 
-    width: 90%;
-    max-width: 900px;
+    border:1px solid rgba(255,255,255,.15);
 
-    padding: 40px;
-    border-radius: 20px;
+    display:grid;
+    grid-template-columns:62% 38%;
 
-    position: relative;
+    padding:42px;
 
-    color: #fff;
+    gap:40px;
 
-    max-height: 90vh;
-    overflow-y: hidden;
+    position:relative;
 }
 
-.film-gallery {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+.film-close{
 
-    gap: 12px;
+    position:absolute;
+    top:18px;
+    right:22px;
 
-    margin: 25px 0 35px;
+    background:none;
+    border:none;
+
+    color:#fff;
+
+    font-size:48px;
+    font-weight:300;
+
+    cursor:pointer;
 }
 
-.film-gallery img {
-    width: 100%;
-    height: 220px;
-
-    object-fit: cover;
-
-    border-radius: 12px;
+.film-poster{
+    display:flex;
+    flex-direction:column;
 }
 
-#film-title {
-    font-size: 38px;
-    margin-bottom: 20px;
+.film-poster img{
+    width:100%;
+    height:610px;
 
-    text-transform: uppercase;
-    letter-spacing: .08em;
+    object-fit:cover;
 }
 
-.film-close {
-    position: absolute;
-    top: 20px;
-    right: 25px;
+.film-meta-bar{
 
-    background: none;
-    border: none;
+    height:55px;
 
-    color: #000000;
-    font-size: 40px;
+    border-top:1px solid rgba(255,255,255,.08);
 
-    cursor: pointer;
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    color:#bcbcbc;
+
+    font-size:12px;
+    letter-spacing:.12em;
 }
 
-#film-image {
-    width: 100%;
-    max-height: 300px;
-
-    object-fit: cover;
-
-    border-radius: 12px;
-
-    margin-bottom: 25px;
-    margin: 20px 0;
+.film-info{
+    display:flex;
+    flex-direction:column;
 }
 
-#film-title {
-    font-size: 38px;
-    margin-bottom: 20px;
+.film-section-title{
+
+    color:#9b1c1c;
+
+    font-size:14px;
+
+    letter-spacing:.25em;
+
+    margin-bottom:22px;
+
+    font-weight:400;
 }
 
-#film-description {
-    font-size: 14px;
-    line-height: 1.8;
+#film-description{
 
-    color: #c2bcbc;
+    color:#d4d4d4;
+
+    font-size:16px;
+
+    line-height:1.9;
+}
+
+.film-line{
+
+    height:1px;
+
+    background:rgba(255,255,255,.08);
+
+    margin:35px 0;
+}
+
+.film-tech-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:22px 30px;
+}
+
+.film-tech-grid span{
+
+    display:block;
+
+    color:#fff;
+
+    font-size:12px;
+
+    letter-spacing:.15em;
+
+    margin-bottom:8px;
+}
+
+.film-tech-grid p{
+
+    color:#cfcfcf;
+
+    font-size:15px;
+}
+
+.film-bottom{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:30px;
+}
+
+.watch-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    width:180px;
+    height:46px;
+
+    border:1px solid rgba(255,255,255,.35);
+
+    color:#fff;
+
+    font-size:13px;
+
+    text-decoration:none;
+}
+
+#film-festivals{
+
+    color:#cfcfcf;
+
+    font-size:13px;
+
+    line-height:1.8;
 }
