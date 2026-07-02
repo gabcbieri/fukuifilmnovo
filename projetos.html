@@ -29,6 +29,7 @@
   <link rel="preload" href="img/cadafalsohorizontal.jpg" as="image">
   <link rel="preload" href="img/etrehorizontal.png" as="image">
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="responsive.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="icon" type="image/png" href="img/ico.ico" />
 </head>
@@ -61,6 +62,12 @@
           Solicitar orçamento
         </a>
 
+        <!-- HAMBURGUER — visível apenas em mobile/tablet via CSS -->
+        <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false"
+          aria-controls="main-navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+
       </div>
 
     </div>
@@ -81,29 +88,34 @@
 
         <div class="projects-grid-custom">
 
-          <button class="project-card" data-project="1">
-            <span class="project-name">Produção de Conteúdo | Casa Inti Café</span>
-            <img src="img/foto1tortinha.jpeg" alt="Projeto 1" loading="eager">
+          <button class="project-card" data-project="6">
+            <span class="project-name">Retratos Corporativos | Growth</span>
+            <img src="img/growthlogo.png" alt="Projeto 6" loading="eager">
           </button>
 
-          <button class="project-card" data-project="2">
-            <span class="project-name">Léo Stronda | Fábrica de Monstros</span>
-            <img src="img/fabricademontros.jpeg" alt="Projeto 2" loading="eager">
+          <button class="project-card" data-project="8">
+            <span class="project-name">Lançamento de Produto | Ozoncare</span>
+            <img src="img/ozoncare4.jpeg" alt="Projeto 2" loading="eager">
           </button>
 
           <button class="project-card" data-project="4">
-            <span class="project-name">PFotografia de Cardápio | Seu Conde</span>
-            <img src="img/foto4.jpeg" alt="Projeto 4" loading="eager">
+            <span class="project-name">Fotografia de Cardápio | Seu Conde</span>
+            <img src="img/foto4.jpeg" alt="Projeto 3" loading="eager">
           </button>
 
+          <button class="project-card" data-project="1">
+            <span class="project-name">Produção de Conteúdo | Casa Inti Café</span>
+            <img src="img/foto1tortinha.jpeg" alt="Projeto 3" loading="eager">
+          </button>
+          
           <button class="project-card" data-project="5">
             <span class="project-name">Delas Summit | Sebrae</span>
             <img src="img/delassummitpreenchimento.jpeg" alt="Projeto 5" loading="eager">
           </button>
 
-          <button class="project-card" data-project="6">
-            <span class="project-name">Retratos Corporativos | Growth</span>
-            <img src="img/growthlogo.png" alt="Projeto 6" loading="eager">
+          <button class="project-card" data-project="2">
+            <span class="project-name">Léo Stronda | Fábrica de Monstros</span>
+            <img src="img/fabricademontros.jpeg" alt="Projeto 3" loading="eager">
           </button>
 
           <button class="project-card" data-project="7">
@@ -121,16 +133,22 @@
             <img src="img/fatoduarumcapa.jpeg" alt="Projeto 8" loading="eager">
           </button>
 
-          <button class="project-card" data-project="8">
-            <span class="project-name">Lançamento de Produto | Ozoncare</span>
-            <img src="img/ozoncare4.jpeg" alt="Projeto 8" loading="eager">
-          </button>
 
           <button class="project-card" data-project="8">
             <span class="project-name">Med Plus Nova Geração | Philozon</span>
             <img src="img/medplusphilozon.png" alt="Projeto 8" loading="eager">
           </button>
-          
+
+          <button class="project-card" data-project="8">
+            <span class="project-name">La Cocina Mescla | Encontro de grandes nomes da gastronomia</span>
+            <img src="img/coccina.jpeg" alt="Projeto 8" loading="eager">
+          </button>
+
+          <button class="project-card" data-project="8">
+            <span class="project-name">Camvel Porto Belo | Vídeo Promocional</span>
+            <img src="img/camvel.PNG" alt="Projeto 8" loading="eager">
+          </button>
+
         </div>
 
       </div>
@@ -198,7 +216,7 @@
             <span id="film-rating">14</span>
             <span>•</span>
 
-            <span>CLASSIFICAÇÃO 14 ANOS</span>
+            <span id="film-classification">CLASSIFICAÇÃO 14 ANOS</span>
 
           </div>
 
@@ -216,9 +234,9 @@
 
           </div>
 
-          <div class="film-line"></div>
+          <div id="film-line-tech" class="film-line"></div>
 
-          <div>
+          <div id="film-tech-block">
 
             <h4 class="film-section-title">
               FICHA TÉCNICA
@@ -265,11 +283,11 @@
 
           </div>
 
-          <div class="film-line"></div>
+          <div id="film-line-bottom" class="film-line"></div>
 
-          <div class="film-bottom">
+          <div id="film-bottom-block" class="film-bottom">
 
-            <div>
+            <div id="film-watch-block">
 
               <h4 class="film-section-title">
                 ASSISTIR
@@ -281,7 +299,7 @@
 
             </div>
 
-            <div>
+            <div id="film-festivals-block">
 
               <h4 class="film-section-title">
                 FESTIVAIS E EXIBIÇÕES

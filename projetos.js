@@ -1,202 +1,4 @@
 /* =========================
-   GALERIA DE PROJETOS
-========================= */
-
-const projects = {
-
-    1: [
-        "img/foto1tortinha.jpeg",
-        "img/foto2.jpg",
-        "img/foto3.jpeg"
-    ],
-
-    2: [
-        "img/foto2.jpg",
-        "img/foto4.jpeg",
-        "img/foto1tortinha.jpeg"
-    ],
-
-    3: [
-        "img/foto3.jpeg",
-        "img/foto1tortinha.jpeg",
-        "img/foto4.jpeg"
-    ],
-
-    4: [
-        "img/foto4.jpeg",
-        "img/foto2.jpg",
-        "img/foto3.jpeg"
-    ],
-
-    5: [
-        "img/foto1tortinha.jpeg",
-        "img/foto3.jpeg",
-        "img/foto2.jpg"
-    ],
-
-    6: [
-        "img/foto2.jpg",
-        "img/foto4.jpeg",
-        "img/foto1tortinha.jpeg"
-    ],
-
-    7: [
-        "img/foto3.jpeg",
-        "img/foto2.jpg",
-        "img/foto4.jpeg"
-    ],
-
-    8: [
-        "img/foto4.jpeg",
-        "img/foto1tortinha.jpeg",
-        "img/foto3.jpeg"
-    ]
-
-};
-
-const projectCards = document.querySelectorAll(".project-card");
-const projectModal = document.querySelector(".project-modal");
-const modalImage = document.getElementById("modal-image");
-
-const closeModalBtn = document.querySelector(".close-modal");
-const prevArrowBtn = document.querySelector(".prev-arrow");
-const nextArrowBtn = document.querySelector(".next-arrow");
-
-let currentProject = [];
-let currentIndex = 0;
-
-if (
-    projectCards.length &&
-    projectModal &&
-    modalImage &&
-    closeModalBtn &&
-    prevArrowBtn &&
-    nextArrowBtn
-) {
-
-    projectCards.forEach(card => {
-
-        card.addEventListener("click", () => {
-
-            const projectId = card.dataset.project;
-
-            currentProject = projects[projectId];
-
-            if (!currentProject) return;
-
-            currentIndex = 0;
-
-            modalImage.src = currentProject[currentIndex];
-
-            projectModal.classList.add("active");
-        });
-
-    });
-
-    function nextImage() {
-
-        if (!currentProject.length) return;
-
-        currentIndex++;
-
-        if (currentIndex >= currentProject.length) {
-            currentIndex = 0;
-        }
-
-        modalImage.src = currentProject[currentIndex];
-    }
-
-    function prevImage() {
-
-        if (!currentProject.length) return;
-
-        currentIndex--;
-
-        if (currentIndex < 0) {
-            currentIndex = currentProject.length - 1;
-        }
-
-        modalImage.src = currentProject[currentIndex];
-    }
-
-    nextArrowBtn.addEventListener("click", (e) => {
-
-        e.stopPropagation();
-        nextImage();
-
-    });
-
-    prevArrowBtn.addEventListener("click", (e) => {
-
-        e.stopPropagation();
-        prevImage();
-
-    });
-
-    closeModalBtn.addEventListener("click", () => {
-
-        projectModal.classList.remove("active");
-
-    });
-
-    projectModal.addEventListener("click", (e) => {
-
-        if (e.target === projectModal) {
-
-            projectModal.classList.remove("active");
-
-        }
-
-    });
-
-    document.addEventListener("keydown", (e) => {
-
-        if (!projectModal.classList.contains("active")) return;
-
-        if (e.key === "ArrowRight") {
-            nextImage();
-        }
-
-        if (e.key === "ArrowLeft") {
-            prevImage();
-        }
-
-        if (e.key === "Escape") {
-            projectModal.classList.remove("active");
-        }
-
-    });
-
-}
-
-const menu = document.querySelector(".floating-menu");
-
-let lastScroll = 0;
-
-window.addEventListener("scroll", () => {
-
-    const currentScroll = window.pageYOffset;
-
-    // topo da página
-    if (currentScroll <= 50) {
-        menu.classList.remove("hide");
-        return;
-    }
-
-    // rolando para baixo
-    if (currentScroll > lastScroll) {
-        menu.classList.add("hide");
-    }
-
-    // rolando para cima
-    else {
-        menu.classList.remove("hide");
-    }
-
-    lastScroll = currentScroll;
-});
-
-/* =========================
    MODAL FILMES
 ========================= */
 
@@ -207,22 +9,23 @@ const films = {
         image: "img/cadafalsohorizontal.jpg",
 
         description:
-            "Entre memórias fragmentadas e silêncios profundos, uma jovem enfrenta os ecos de um passado que insiste em permanecer. Cadafalso é uma jornada sensorial sobre identidade, culpa e a busca por pertencimento.",
+            "Um drama psicológico que acompanha uma jovem em meio às consequências de um trauma, explorando memória, culpa e as marcas invisíveis da violência através de uma narrativa fragmentada e intimista.",
 
         genre: "DRAMA PSICOLÓGICO",
-        duration: "14 MIN",
+        duration: "15 MIN",
         year: "2024",
-        rating: "14",
+        rating: "+16",
+        classification: "CLASSIFICAÇÃO 16 ANOS",
 
         director: "Yohanna Fukui",
         editor: "Yohanna Fukui",
         producer: "FUKUIFILM",
         cast: "Júlia Souza, Ace Monteiro, Laís Ferreira",
         script: "Yohanna Fukui",
-        runtime: "14 minutos",
+        runtime: "15 minutos",
         photo: "Yohanna Fukui",
 
-        trailer: "#",
+        trailer: "https://www.youtube.com/watch?v=ilqoIrWkjSc",
 
         festivals:
             "Festival de Cinema de Goiânia 2024 • Lift-Off Global Network 2024 • Oniros Film Awards 2024"
@@ -234,25 +37,16 @@ const films = {
         image: "img/etrehorizontal.png",
 
         description:
-            "ÊTRE investiga presença, memória e existência através de uma narrativa contemplativa e visualmente minimalista.",
+            "Um documentário poético que entrelaça as histórias de mulheres imigrantes, refletindo sobre identidade, pertencimento e a capacidade humana de transformar fronteiras em conexões.",
 
-        genre: "EXPERIMENTAL",
-        duration: "12 MIN",
-        year: "2024",
-        rating: "12",
+        genre: "DOCUMENTÁRIO POÉTICO",
+        duration: "10 MIN",
+        year: "2023",
+        rating: "LIVRE",
+        classification: "LIVRE PARA TODOS OS PÚBLICOS"
 
-        director: "Yohanna Fukui",
-        editor: "Yohanna Fukui",
-        producer: "FUKUIFILM",
-        cast: "A definir",
-        script: "Yohanna Fukui",
-        runtime: "12 minutos",
-        photo: "Yohanna Fukui",
-
-        trailer: "#",
-
-        festivals:
-            "Em circuito de festivais"
+        // Sem ficha tecnica, trailer ou festivais divulgados para este filme —
+        // esses blocos do modal ficam ocultos (ver logica mais abaixo).
 
     }
 
@@ -270,6 +64,7 @@ const filmGenre = document.getElementById("film-genre");
 const filmDuration = document.getElementById("film-duration");
 const filmYear = document.getElementById("film-year");
 const filmRating = document.getElementById("film-rating");
+const filmClassification = document.getElementById("film-classification");
 
 const filmDirector = document.getElementById("film-director");
 const filmEditor = document.getElementById("film-editor");
@@ -282,66 +77,210 @@ const filmPhoto = document.getElementById("film-photo");
 const filmTrailer = document.getElementById("film-trailer");
 const filmFestivals = document.getElementById("film-festivals");
 
-filmButtons.forEach(button => {
+const filmLineTech = document.getElementById("film-line-tech");
+const filmTechBlock = document.getElementById("film-tech-block");
+const filmLineBottom = document.getElementById("film-line-bottom");
+const filmBottomBlock = document.getElementById("film-bottom-block");
+const filmWatchBlock = document.getElementById("film-watch-block");
+const filmFestivalsBlock = document.getElementById("film-festivals-block");
 
-    button.addEventListener("click", () => {
+let lastFocusedFilmTrigger = null;
 
-        const filmId = button.dataset.film;
-        const film = films[filmId];
+if (filmButtons.length && filmModal && filmClose) {
 
-        if (!film) return;
+    filmButtons.forEach(button => {
 
-        filmImage1.src = film.image;
+        button.addEventListener("click", () => {
 
-        filmDescription.textContent = film.description;
+            const filmId = button.dataset.film;
+            const film = films[filmId];
 
-        filmGenre.textContent = film.genre;
-        filmDuration.textContent = film.duration;
-        filmYear.textContent = film.year;
-        filmRating.textContent = film.rating;
+            if (!film) return;
 
-        filmDirector.textContent = film.director;
-        filmEditor.textContent = film.editor;
-        filmProducer.textContent = film.producer;
-        filmCast.textContent = film.cast;
-        filmScript.textContent = film.script;
-        filmRuntime.textContent = film.runtime;
-        filmPhoto.textContent = film.photo;
+            lastFocusedFilmTrigger = button;
 
-        filmTrailer.href = film.trailer;
+            filmImage1.src = film.image;
+            filmImage1.alt = filmId;
 
-        filmFestivals.textContent = film.festivals;
+            filmDescription.textContent = film.description;
 
-        filmModal.classList.add("active");
+            filmGenre.textContent = film.genre;
+            filmDuration.textContent = film.duration;
+            filmYear.textContent = film.year;
+            filmRating.textContent = film.rating;
+            filmClassification.textContent = film.classification;
+
+            // FICHA TECNICA — so exibe se o filme tiver esses dados
+            const hasTechSheet = !!film.director;
+
+            if (hasTechSheet) {
+                filmDirector.textContent = film.director;
+                filmEditor.textContent = film.editor;
+                filmProducer.textContent = film.producer;
+                filmCast.textContent = film.cast;
+                filmScript.textContent = film.script;
+                filmRuntime.textContent = film.runtime;
+                filmPhoto.textContent = film.photo;
+            }
+
+            filmLineTech.style.display = hasTechSheet ? "" : "none";
+            filmTechBlock.style.display = hasTechSheet ? "" : "none";
+
+            // ASSISTIR — so exibe se houver link de trailer
+            const hasTrailer = !!film.trailer;
+
+            if (hasTrailer) {
+                filmTrailer.href = film.trailer;
+            }
+
+            filmWatchBlock.style.display = hasTrailer ? "" : "none";
+
+            // FESTIVAIS E EXIBICOES — so exibe se houver essa informacao
+            const hasFestivals = !!film.festivals;
+
+            if (hasFestivals) {
+                filmFestivals.textContent = film.festivals;
+            }
+
+            filmFestivalsBlock.style.display = hasFestivals ? "" : "none";
+
+            // Linha e bloco inferior somem por completo se nao houver
+            // nem trailer nem festivais para mostrar
+            const showBottomRow = hasTrailer || hasFestivals;
+
+            filmLineBottom.style.display = showBottomRow ? "" : "none";
+            filmBottomBlock.style.display = showBottomRow ? "" : "none";
+            filmBottomBlock.classList.toggle("film-bottom--single", showBottomRow && (!hasTrailer || !hasFestivals));
+
+            filmModal.classList.add("active");
+            document.body.classList.add("modal-open");
+            filmClose.focus();
+
+        });
 
     });
 
-});
-
-filmClose.addEventListener("click", () => {
-
-    filmModal.classList.remove("active");
-
-});
-
-filmModal.addEventListener("click", (e) => {
-
-    if (e.target === filmModal) {
-
+    function closeFilmModal() {
         filmModal.classList.remove("active");
-
+        document.body.classList.remove("modal-open");
+        if (lastFocusedFilmTrigger) lastFocusedFilmTrigger.focus();
     }
 
-});
+    filmClose.addEventListener("click", closeFilmModal);
 
-document.addEventListener("keydown", (e) => {
+    filmModal.addEventListener("click", (e) => {
+        if (e.target === filmModal) {
+            closeFilmModal();
+        }
+    });
 
-    if (!filmModal.classList.contains("active")) return;
+    document.addEventListener("keydown", (e) => {
+        if (!filmModal.classList.contains("active")) return;
+        if (e.key === "Escape") {
+            closeFilmModal();
+        }
+    });
 
-    if (e.key === "Escape") {
+}
 
-        filmModal.classList.remove("active");
+/* =========================
+   MENU — MOBILE TOGGLE
+========================= */
 
+const nav = document.getElementById("main-navigation");
+const toggleBtn = document.querySelector(".menu-toggle");
+
+if (nav && toggleBtn && menu) {
+
+    function openMobileMenu() {
+        nav.classList.add("open");
+        menu.classList.remove("hide");
+        toggleBtn.setAttribute("aria-expanded", "true");
+        toggleBtn.innerHTML = `<i class="fas fa-times"></i>`;
+        document.body.classList.add("menu-open");
+        document.body.style.overflow = "hidden";
     }
 
-});
+    function closeMobileMenu() {
+        nav.classList.remove("open");
+        toggleBtn.setAttribute("aria-expanded", "false");
+        toggleBtn.innerHTML = `<i class="fas fa-bars"></i>`;
+        document.body.classList.remove("menu-open");
+        document.body.style.overflow = "";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+        nav.classList.contains("open") ? closeMobileMenu() : openMobileMenu();
+    });
+
+    nav.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", closeMobileMenu);
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && nav.classList.contains("open")) {
+            closeMobileMenu();
+            toggleBtn.focus();
+        }
+    });
+
+    document.addEventListener("click", (e) => {
+        if (!nav.classList.contains("open")) return;
+        if (!menu.contains(e.target)) {
+            closeMobileMenu();
+        }
+    });
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 1023 && nav.classList.contains("open")) {
+            closeMobileMenu();
+        }
+    });
+
+}
+
+/* =========================
+   HOVER -> TOQUE (MOBILE)
+   Ativa estados de :hover (project-card, film-block, service-card,
+   projects-gallery img) atraves de toque em telas sem mouse.
+========================= */
+
+(function enableTouchHover() {
+
+    const touchHoverSelectors = [
+        ".project-card",
+        ".service-card",
+        ".film-block",
+        ".projects-gallery img"
+    ];
+
+    const isTouchDevice = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+
+    if (!isTouchDevice) return;
+
+    const activeClass = "is-touch-active";
+
+    function clearActive(except) {
+        document.querySelectorAll("." + activeClass).forEach(el => {
+            if (el !== except) el.classList.remove(activeClass);
+        });
+    }
+
+    touchHoverSelectors.forEach(selector => {
+        document.querySelectorAll(selector).forEach(el => {
+            el.addEventListener("touchstart", (e) => {
+                const alreadyActive = el.classList.contains(activeClass);
+                clearActive(el);
+                el.classList.toggle(activeClass, !alreadyActive);
+            }, { passive: true });
+        });
+    });
+
+    document.addEventListener("touchstart", (e) => {
+        const insideTarget = touchHoverSelectors.some(sel =>
+            e.target.closest(sel)
+        );
+        if (!insideTarget) clearActive();
+    }, { passive: true });
+
+})();
