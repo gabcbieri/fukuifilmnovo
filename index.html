@@ -60,6 +60,12 @@
         <li><a href="#projetos">Projetos</a></li>
         <li><a href="#metodo">Método</a></li>
         <li><a href="#servicos">Serviços</a></li>
+        <li class="nav-instagram">
+          <a href="https://www.instagram.com/fukuifilm/" target="_blank">
+            <i class="fab fa-instagram"></i>
+            Instagram
+          </a>
+        </li>
       </ul>
 
       <!-- DIREITA -->
@@ -91,9 +97,11 @@
     <section class="intro-video">
 
       <video autoplay muted loop playsinline preload="metadata">
-        <source src="https://res.cloudinary.com/dtv1yh9pa/video/upload/v1782920136/VI%CC%81DEO_SITE_VERTICAL_V2_bce8zp.mp4"
+        <source
+          src="https://res.cloudinary.com/dtv1yh9pa/video/upload/v1782920136/VI%CC%81DEO_SITE_VERTICAL_V2_bce8zp.mp4"
           type="video/mp4" media="(max-width: 767px)">
-        <source src="https://res.cloudinary.com/dtv1yh9pa/video/upload/v1782920126/VI%CC%81DEO_SITE_HORIZONTAL_V1_1_fejhfw.mp4"
+        <source
+          src="https://res.cloudinary.com/dtv1yh9pa/video/upload/v1782920126/VI%CC%81DEO_SITE_HORIZONTAL_V1_1_fejhfw.mp4"
           type="video/mp4">
       </video>
 
@@ -225,43 +233,48 @@
         </p>
       </div>
 
-      <div class="method-slider">
+      <div class="method-content">
 
-        <button id="prevMethod" class="method-arrow prev" type="button">◀</button>
+        <div class="method-slider">
 
-        <div class="method-slide active">
-          <img src="img/entendimento.jpeg" alt="Entendimento">
-          <div class="method-overlay">
-            <h3>ENTENDIMENTO</h3>
-            <p>Compreendemos profundamente sua marca, objetivos e público para criar uma estratégia sólida.</p>
+          <div class="method-slide active">
+            <img src="img/entendimento.jpeg" alt="Entendimento">
+            <div class="method-overlay">
+              <h3>ENTENDIMENTO</h3>
+              <p>Compreendemos profundamente sua marca, objetivos e público para criar uma estratégia sólida.</p>
+            </div>
           </div>
+
+          <div class="method-slide">
+            <img src="img/direcao.jpg" alt="Direção">
+            <div class="method-overlay">
+              <h3>DIREÇÃO</h3>
+              <p>Definimos caminhos criativos que conectam propósito, estética e resultado.</p>
+            </div>
+          </div>
+
+          <div class="method-slide">
+            <img src="img/metodo.jpeg" alt="Processo">
+            <div class="method-overlay">
+              <h3>PROCESSO</h3>
+              <p>Planejamos e executamos cada etapa com precisão e consistência.</p>
+            </div>
+          </div>
+
+          <div class="method-slide">
+            <img src="img/entrega.jpeg" alt="Entrega">
+            <div class="method-overlay">
+              <h3>ENTREGA</h3>
+              <p>Finalizamos cada projeto com excelência, garantindo impacto e valor.</p>
+            </div>
+          </div>
+
         </div>
 
-        <div class="method-slide">
-          <img src="img/direcao.jpg" alt="Direção">
-          <div class="method-overlay">
-            <h3>DIREÇÃO</h3>
-            <p>Definimos caminhos criativos que conectam propósito, estética e resultado.</p>
-          </div>
+        <div class="method-controls">
+          <button id="prevMethod" class="method-arrow prev" type="button">◀</button>
+          <button id="nextMethod" class="method-arrow next" type="button">▶</button>
         </div>
-
-        <div class="method-slide">
-          <img src="img/metodo.jpeg" alt="Processo">
-          <div class="method-overlay">
-            <h3>PROCESSO</h3>
-            <p>Planejamos e executamos cada etapa com precisão e consistência.</p>
-          </div>
-        </div>
-
-        <div class="method-slide">
-          <img src="img/entrega.jpeg" alt="Entrega">
-          <div class="method-overlay">
-            <h3>ENTREGA</h3>
-            <p>Finalizamos cada projeto com excelência, garantindo impacto e valor.</p>
-          </div>
-        </div>
-
-        <button id="nextMethod" class="method-arrow next" type="button">▶</button>
 
       </div>
 
@@ -276,12 +289,10 @@
 
       <div class="services-slider">
 
-        <button id="prevServices" class="slider-btn prev" type="button">◀</button>
-
         <div class="services-track">
 
           <article class="service-card">
-            <img src="img/piove1.jpg" alt="Filmes" loading="eager">
+            <img src="img/etrehorizontal.png" alt="Filmes" loading="eager">
             <div class="service-overlay">
               <h3>FILMES</h3>
               <p>Produções cinematográficas para marcas, campanhas e projetos autorais.</p>
@@ -314,7 +325,10 @@
 
         </div>
 
-        <button id="nextServices" class="slider-btn next" type="button">▶</button>
+        <div class="services-controls">
+          <button id="prevServices" class="slider-btn prev" type="button">◀</button>
+          <button id="nextServices" class="slider-btn next" type="button">▶</button>
+        </div>
 
       </div>
 

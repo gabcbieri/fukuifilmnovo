@@ -9,21 +9,21 @@ const films = {
         image: "img/cadafalsohorizontal.jpg",
 
         description:
-            "Um drama psicológico que acompanha uma jovem em meio às consequências de um trauma, explorando memória, culpa e as marcas invisíveis da violência através de uma narrativa fragmentada e intimista.",
+            "Um drama psicológico que acompanha diferentes personagens marcados por traumas, culpa e violência, revelando como cada escolha pode conduzir a um inevitável confronto com as próprias consequências.",
 
         genre: "DRAMA PSICOLÓGICO",
-        duration: "15 MIN",
+        duration: "14 MIN",
         year: "2024",
-        rating: "+16",
-        classification: "CLASSIFICAÇÃO 16 ANOS",
+        rating: "14",
+        classification: "CLASSIFICAÇÃO 14 ANOS",
 
-        director: "Yohanna Fukui",
-        editor: "Yohanna Fukui",
-        producer: "FUKUIFILM",
-        cast: "Júlia Souza, Ace Monteiro, Laís Ferreira",
-        script: "Yohanna Fukui",
-        runtime: "15 minutos",
-        photo: "Yohanna Fukui",
+        director: "Yohana Fukui",
+        editor: "—",
+        producer: "Jade Monteiro<br>Taly Lima<br>Yohana Fukui",
+        cast: "Vêronica Bornhofen (Carla)<br>Sarah Motta (Bárbara)<br>Guilherme Klabunde (Mateus)<br>Sabrina Vianna (Ana)",
+        script: "Julia Souza<br>Nicole Cunha<br>Ella Pierreserra",
+        runtime: "14 minutos",
+        photo: "Juliano Freitas<br>Bruno BM<br>Yohana Fukui<br>Junior Lara",
 
         trailer: "https://www.youtube.com/watch?v=ilqoIrWkjSc",
 
@@ -37,16 +37,25 @@ const films = {
         image: "img/etrehorizontal.png",
 
         description:
-            "Um documentário poético que entrelaça as histórias de mulheres imigrantes, refletindo sobre identidade, pertencimento e a capacidade humana de transformar fronteiras em conexões.",
+            "Um curta que explora identidade, pertencimento e a experiência humana através de uma narrativa sensível e intimista.",
 
-        genre: "DOCUMENTÁRIO POÉTICO",
+        genre: "DRAMA",
         duration: "10 MIN",
-        year: "2023",
+        year: "2024",
         rating: "LIVRE",
-        classification: "LIVRE PARA TODOS OS PÚBLICOS"
+        classification: "LIVRE PARA TODOS OS PÚBLICOS",
 
-        // Sem ficha tecnica, trailer ou festivais divulgados para este filme —
-        // esses blocos do modal ficam ocultos (ver logica mais abaixo).
+        director: "Yohana Fukui",
+        editor: "Pedro Garcia",
+        producer: "—",
+        cast: "Ella Pierreserra<br>Melyssa Mell Gomes<br>Isadora Tavares",
+        script: "Ana Claudia Sguário",
+        runtime: "10 minutos",
+        photo: "Yohana Fukui",
+
+        trailer: "",
+
+        festivals: ""
 
     }
 
@@ -114,13 +123,13 @@ if (filmButtons.length && filmModal && filmClose) {
             const hasTechSheet = !!film.director;
 
             if (hasTechSheet) {
-                filmDirector.textContent = film.director;
-                filmEditor.textContent = film.editor;
-                filmProducer.textContent = film.producer;
-                filmCast.textContent = film.cast;
-                filmScript.textContent = film.script;
-                filmRuntime.textContent = film.runtime;
-                filmPhoto.textContent = film.photo;
+                filmDirector.innerHTML = film.director;
+                filmEditor.innerHTML = film.editor;
+                filmProducer.innerHTML = film.producer;
+                filmCast.innerHTML = film.cast;
+                filmScript.innerHTML = film.script;
+                filmRuntime.innerHTML = film.runtime;
+                filmPhoto.innerHTML = film.photo;
             }
 
             filmLineTech.style.display = hasTechSheet ? "" : "none";

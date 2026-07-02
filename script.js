@@ -7,6 +7,8 @@
 const nav       = document.getElementById("main-navigation");
 const toggleBtn = document.querySelector(".menu-toggle");
 
+const menu = document.querySelector(".floating-menu");
+
 if (nav && toggleBtn && menu) {
 
   function openMobileMenu() {
@@ -26,7 +28,8 @@ if (nav && toggleBtn && menu) {
     document.body.style.overflow = "";
   }
 
-  toggleBtn.addEventListener("click", () => {
+  toggleBtn.addEventListener("pointerdown", (e) => {
+    e.preventDefault();
     nav.classList.contains("open") ? closeMobileMenu() : openMobileMenu();
   });
 
@@ -44,12 +47,18 @@ if (nav && toggleBtn && menu) {
   });
 
   // Fecha ao clicar fora do menu
-  document.addEventListener("click", (e) => {
+document.addEventListener("pointerdown", (e) => {
+
     if (!nav.classList.contains("open")) return;
-    if (!menu.contains(e.target)) {
-      closeMobileMenu();
+
+    if (
+        !nav.contains(e.target) &&
+        !toggleBtn.contains(e.target)
+    ) {
+        closeMobileMenu();
     }
-  });
+
+});
 
   // Fecha ao passar para desktop (ex: rotacao de tela)
   window.addEventListener("resize", () => {
