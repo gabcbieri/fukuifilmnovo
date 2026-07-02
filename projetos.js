@@ -28,7 +28,9 @@ const films = {
         trailer: "https://www.youtube.com/watch?v=ilqoIrWkjSc",
 
         festivals:
-            "Festival de Cinema de Goiânia 2024 • Lift-Off Global Network 2024 • Oniros Film Awards 2024"
+            "Tainha Dourada • FAM • Cine Capivara",
+
+        platforms: "Prime Video • Claro TV • Box Brazil Play",
 
     },
 
@@ -55,7 +57,10 @@ const films = {
 
         trailer: "",
 
-        festivals: ""
+        festivals:
+            "Tainha Dourada • FAM • Fastcine • FICSC",
+
+        platforms: "Prime Video • Claro TV • Box Brazil Play",
 
     }
 
@@ -92,6 +97,8 @@ const filmLineBottom = document.getElementById("film-line-bottom");
 const filmBottomBlock = document.getElementById("film-bottom-block");
 const filmWatchBlock = document.getElementById("film-watch-block");
 const filmFestivalsBlock = document.getElementById("film-festivals-block");
+const filmPlatforms = document.getElementById("film-platforms");
+const filmPlatformsBlock = document.getElementById("film-platforms-block");
 
 let lastFocusedFilmTrigger = null;
 
@@ -165,6 +172,14 @@ if (filmButtons.length && filmModal && filmClose) {
             document.body.classList.add("modal-open");
             filmClose.focus();
 
+            const hasPlatforms = !!film.platforms;
+
+            if (hasPlatforms) {
+                filmPlatforms.textContent = film.platforms;
+            }
+
+            filmPlatformsBlock.style.display = hasPlatforms ? "" : "none";
+
         });
 
     });
@@ -196,22 +211,24 @@ if (filmButtons.length && filmModal && filmClose) {
    MENU — MOBILE TOGGLE
 ========================= */
 
+const menu = document.querySelector(".floating-menu");
 const nav = document.getElementById("main-navigation");
 const toggleBtn = document.querySelector(".menu-toggle");
 
-if (nav && toggleBtn && menu) {
+if (menu && nav && toggleBtn) {
 
     function openMobileMenu() {
         nav.classList.add("open");
-        menu.classList.remove("hide");
+        menu.classList.add("open");
         toggleBtn.setAttribute("aria-expanded", "true");
-        toggleBtn.innerHTML = `<i class="fas fa-times"></i>`;
+        toggleBtn.innerHTML = `<i class="fas fa-bars"></i>`;
         document.body.classList.add("menu-open");
         document.body.style.overflow = "hidden";
     }
 
     function closeMobileMenu() {
         nav.classList.remove("open");
+        menu.classList.remove("open");
         toggleBtn.setAttribute("aria-expanded", "false");
         toggleBtn.innerHTML = `<i class="fas fa-bars"></i>`;
         document.body.classList.remove("menu-open");
@@ -219,7 +236,9 @@ if (nav && toggleBtn && menu) {
     }
 
     toggleBtn.addEventListener("click", () => {
-        nav.classList.contains("open") ? closeMobileMenu() : openMobileMenu();
+        nav.classList.contains("open")
+            ? closeMobileMenu()
+            : openMobileMenu();
     });
 
     nav.querySelectorAll("a").forEach(link => {
@@ -235,6 +254,7 @@ if (nav && toggleBtn && menu) {
 
     document.addEventListener("click", (e) => {
         if (!nav.classList.contains("open")) return;
+
         if (!menu.contains(e.target)) {
             closeMobileMenu();
         }
@@ -245,7 +265,6 @@ if (nav && toggleBtn && menu) {
             closeMobileMenu();
         }
     });
-
 }
 
 /* =========================

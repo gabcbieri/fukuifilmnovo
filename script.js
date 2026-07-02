@@ -15,7 +15,7 @@ if (nav && toggleBtn && menu) {
     nav.classList.add("open");
     menu.classList.remove("hide");            // garante que o menu aparece
     toggleBtn.setAttribute("aria-expanded", "true");
-    toggleBtn.innerHTML = `<i class="fas fa-times"></i>`;
+    toggleBtn.innerHTML = `<i class="fas fa-bars"></i>`;
     document.body.classList.add("menu-open");
     document.body.style.overflow = "hidden";  // trava scroll da pagina
   }
